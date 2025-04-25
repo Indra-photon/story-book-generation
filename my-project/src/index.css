@@ -1,0 +1,95 @@
+/* index.css - add this to your main CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Chewy&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-dark bg-light;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-chewy;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-full font-semibold transition duration-300 transform;
+  }
+  
+  .btn-primary {
+    @apply bg-accent text-dark shadow-button hover:-translate-y-1;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-dark text-dark hover:bg-dark hover:text-white;
+  }
+}
+
+/* Add these custom animations to your index.css or create a new animations.css file */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 12s infinite ease-in-out;
+  }
+  
+  .animate-bounce {
+    animation: bounce 4s infinite ease-in-out;
+  }
+  
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+  
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+  
+  .animation-delay-1500 {
+    animation-delay: 1.5s;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-3000 {
+    animation-delay: 3s;
+  }
+  
+  .shadow-button {
+    box-shadow: 0 6px 0 theme('colors.dark');
+  }
+  
+  .shadow-button:hover {
+    box-shadow: 0 4px 0 theme('colors.dark');
+  }
+}
+.shadow-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
