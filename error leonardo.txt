@@ -1,0 +1,30 @@
+🚀 In this video, you’ll learn how to build a powerful Weather Agent using LangChain and OpenAI with custom tool calling capabilities!
+Whether you're building a smart assistant, integrating APIs with LLMs, or just getting started with LangChain — this hands-on tutorial will guide you step-by-step.
+
+🧠 What You'll Learn:
+
+How to create a weather-fetching agent using LangChain
+Setting up custom tools and integrating APIs (like OpenWeatherMap)
+How OpenAI’s function calling works
+Making LLMs smarter using tool calling (function calling) features
+Real-time use case of LLM x External Data
+
+✅ By the end of the video, you'll have a working AI agent that can respond to weather queries by calling an external API — intelligently and efficiently.
+
+Blog: https://codecrafts-indranil.hashnode.dev/how-to-build-a-simple-math-assistant-using-langchains-tool-calling-and-openai
+My Profile: 
+Twitter : https://x.com/Nil_phy_dreamer
+LinkedIn :   / indranil-maiti-7542941b7  
+Portfolio : https://my-portfolio-indranil-maitis-...
+
+🔗 Helpful Links:
+
+LangChain Documentation: https://docs.langchain.com
+
+OpenAI API: https://platform.openai.com
+
+#LangChain #OpenAI #FunctionCalling #WeatherAgent #AIAgent #LangChainTutorial #PythonAI #OpenAIAPI #LLMTools #ToolCalling #WeatherBot #LangChainProjects #OpenWeatherMap #AIintegration #CustomToolCalling
+
+
+
+Build a Weather Agent with LangChain + OpenAI | Custom Tool Calling Tutorial | #chatgpt #langchain 

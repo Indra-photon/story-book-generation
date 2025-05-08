@@ -7,16 +7,16 @@ import Pricing from '../components/Pricing'
 import TryItNow from '../components/TryItNow'
 import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
+import StorybookShowcase from '../components/Storybookshowcase'
 
 function Home() {
   return (
     <div>
       <Hero />
+      <StorybookShowcase />
       <HowItWorks />
       <FeaturesShowcase />
-      <Gallery />
       <Pricing />
-      <TryItNow />
       <FAQ />
       <Footer />
     </div>

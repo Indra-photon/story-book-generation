@@ -14,6 +14,8 @@ import Dashboard from './pages/Dashboard.jsx'
 import PathwaySelection from './components/PathwaySelection.jsx'
 import CharacterCreation from './components/CharacterCreation.jsx'
 import StoryCreation from './components/StoryCreation.jsx'
+import VerifyEmail from './pages/VerifyEmail.jsx'
+import StoryEditor from './components/StoryEditor.jsx'
 
 
 
@@ -63,6 +65,22 @@ const router = createBrowserRouter([
         element: (
           <AuthLayout authentication={true}>
               <Dashboard />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/verify-email",
+        element: (
+          <AuthLayout authentication={false}> {/* Or true, depending on your preference */}
+            <VerifyEmail />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/edit-story/:storyId",
+        element: (
+          <AuthLayout authentication={true}>
+            <StoryEditor />
           </AuthLayout>
         ),
       },

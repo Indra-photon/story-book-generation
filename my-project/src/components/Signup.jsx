@@ -98,12 +98,12 @@ const Signup = () => {
         <div className="relative z-10">
           {/* Header */}
           <div className="text-center">
-            <Link to="/" className="flex items-center justify-center gap-2 mb-6">
+            {/* <Link to="/" className="flex items-center justify-center gap-2 mb-6">
               <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold">
-                C
+                S
               </div>
-              <span className="text-2xl font-chewy text-primary-500">CharaFun</span>
-            </Link>
+              <span className="text-2xl font-chewy text-primary-500">StoryTeller</span>
+            </Link> */}
             <h2 className="text-3xl font-chewy text-dark">Create Account</h2>
             <p className="text-gray-600 mt-2">
               Join us and start creating animated characters
@@ -216,7 +216,7 @@ const Signup = () => {
           </form>
           
           {/* Social Signup */}
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-300"></div>
@@ -251,7 +251,7 @@ const Signup = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
           
           {/* Link to login */}
           <div className="text-center mt-6">
