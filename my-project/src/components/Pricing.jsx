@@ -1,4 +1,3 @@
-// Pricing.jsx
 import React, { useState } from 'react';
 
 const Pricing = () => {
@@ -10,14 +9,15 @@ const Pricing = () => {
       description: "Try out the basic features",
       monthlyPrice: 0,
       annualPrice: 0,
+      tokenAmount: 10,
       features: [
-        { text: "3 character transformations", included: true },
-        { text: "Basic animation styles", included: true },
-        { text: "Export as GIF", included: true },
-        { text: "Standard quality output", included: true },
+        { text: "10 tokens (2 stories)", included: true },
+        { text: "Basic story themes", included: true },
+        { text: "Standard illustrations", included: true },
+        { text: "Story sharing", included: true },
         { text: "Community support", included: true },
-        { text: "Advanced animation styles", included: false },
-        { text: "Remove watermark", included: false },
+        { text: "Premium story themes", included: false },
+        { text: "High-quality illustrations", included: false },
         { text: "Commercial usage rights", included: false }
       ],
       cta: "Start Free",
@@ -25,18 +25,19 @@ const Pricing = () => {
     },
     {
       name: "Pro",
-      description: "Perfect for content creators",
+      description: "Perfect for regular creators",
       monthlyPrice: 12.99,
       annualPrice: 9.99,
+      tokenAmount: 50,
       features: [
-        { text: "Unlimited transformations", included: true },
-        { text: "All animation styles", included: true },
-        { text: "Export as GIF, MP4, WebM", included: true },
-        { text: "HD quality output", included: true },
+        { text: "50 tokens (10 stories) monthly", included: true },
+        { text: "All story themes", included: true },
+        { text: "High-quality illustrations", included: true },
+        { text: "Customizable characters", included: true },
         { text: "Priority support", included: true },
-        { text: "No watermark", included: true },
         { text: "Commercial usage rights", included: true },
-        { text: "Custom animation editor", included: false }
+        { text: "Story editing tools", included: true },
+        { text: "API access", included: false }
       ],
       cta: "Get Pro",
       popular: true
@@ -46,17 +47,18 @@ const Pricing = () => {
       description: "For teams and businesses",
       monthlyPrice: 29.99,
       annualPrice: 24.99,
+      tokenAmount: 200,
       features: [
+        { text: "200 tokens (40 stories) monthly", included: true },
         { text: "Everything in Pro", included: true },
         { text: "5 team member accounts", included: true },
-        { text: "Custom animation editor", included: true },
         { text: "API access", included: true },
         { text: "Dedicated account manager", included: true },
         { text: "Custom branding options", included: true },
         { text: "Advanced analytics", included: true },
         { text: "White-label solutions", included: true }
       ],
-      cta: "Contact Sales",
+      cta: "Get Business",
       popular: false
     }
   ];
@@ -68,7 +70,7 @@ const Pricing = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-chewy text-dark mb-4">Simple, Transparent Pricing</h2>
           <p className="text-xl max-w-3xl mx-auto text-gray-600 mb-8">
-            Choose the perfect plan for your needs. No hidden fees.
+            Choose the perfect plan for your storytelling needs. No hidden fees.
           </p>
           
           {/* Toggle switch */}
@@ -111,6 +113,16 @@ const Pricing = () => {
                     /month
                   </span>
                 </div>
+                <div className={`mb-4 text-center py-2 px-3 rounded-lg ${
+                  plan.popular ? 'bg-white/20' : 'bg-primary-100'
+                }`}>
+                  <span className={`font-bold ${plan.popular ? 'text-white' : 'text-primary-500'}`}>
+                    {plan.tokenAmount} tokens
+                  </span>
+                  <span className={`text-sm ${plan.popular ? 'text-white/80' : 'text-gray-500'}`}>
+                    {' '}(~{Math.floor(plan.tokenAmount/5)} stories)
+                  </span>
+                </div>
                 <button className={`w-full py-3 rounded-full font-bold transition-all ${
                   plan.popular 
                     ? 'bg-accent text-dark hover:bg-accent/90' 
@@ -145,17 +157,17 @@ const Pricing = () => {
           ))}
         </div>
         
-        {/* Enterprise callout */}
+        {/* Token purchase callout */}
         <div className="mt-16 bg-gray-100 rounded-2xl p-8 max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-6 md:mb-0">
-              <h3 className="text-2xl font-chewy text-dark mb-2">Need a custom solution?</h3>
+              <h3 className="text-2xl font-chewy text-dark mb-2">Need additional tokens?</h3>
               <p className="text-gray-600">
-                Contact us for enterprise pricing and custom feature development.
+                Purchase token packs anytime to create more stories without changing your subscription.
               </p>
             </div>
             <button className="px-6 py-3 bg-dark text-white font-bold rounded-full hover:-translate-y-1 transform transition duration-200">
-              Contact Us
+              Buy Tokens
             </button>
           </div>
         </div>
@@ -165,27 +177,27 @@ const Pricing = () => {
           <h3 className="text-2xl md:text-3xl font-chewy text-dark text-center mb-8">Frequently Asked Questions</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <div className="bg-white p-6 rounded-xl shadow-md">
+              <h4 className="font-bold text-lg text-dark mb-2">How do tokens work?</h4>
+              <p className="text-gray-600">
+                Each story generation costs 5 tokens. Free accounts start with 10 tokens. Paid subscriptions receive a monthly token allocation on their billing date.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h4 className="font-bold text-lg text-dark mb-2">Do unused tokens expire?</h4>
+              <p className="text-gray-600">
+                Tokens remain in your account until used, up to your plan's maximum token balance. Monthly allocations are added as long as your subscription is active.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h4 className="font-bold text-lg text-dark mb-2">Do I own the stories I create?</h4>
+              <p className="text-gray-600">
+                Yes, you retain full ownership of all stories created on our platform. Pro and Business subscribers also receive commercial usage rights.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md">
               <h4 className="font-bold text-lg text-dark mb-2">Can I change plans later?</h4>
               <p className="text-gray-600">
                 Yes! You can upgrade, downgrade, or cancel your plan at any time. Changes take effect at the start of your next billing cycle.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <h4 className="font-bold text-lg text-dark mb-2">What payment methods do you accept?</h4>
-              <p className="text-gray-600">
-                We accept all major credit cards, PayPal, and Apple Pay. Enterprise clients can also pay by invoice.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <h4 className="font-bold text-lg text-dark mb-2">Do I own the characters I create?</h4>
-              <p className="text-gray-600">
-                Yes, you retain full ownership of all characters created from your portraits on our Pro and Business plans.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <h4 className="font-bold text-lg text-dark mb-2">How many team members can I add?</h4>
-              <p className="text-gray-600">
-                The Business plan includes 5 team members. Additional seats can be added for $10/month per user.
               </p>
             </div>
           </div>

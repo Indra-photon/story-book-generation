@@ -1,6 +1,7 @@
 // components/WelcomeDashboard.jsx
 import React from 'react';
 import { ArrowRight, Zap, Heart, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const WelcomeDashboard = ({ onStartCreating }) => {
   return (
@@ -22,7 +23,7 @@ const WelcomeDashboard = ({ onStartCreating }) => {
             <div>
               <h3 className="text-xl font-chewy text-dark mb-2">Quick Start</h3>
               <p className="text-gray-700">
-                Ready to create? Click the button below to jump straight into our creation tools.
+                Ready to create? Click and go to the dashboard
               </p>
             </div>
           </div>
@@ -43,47 +44,16 @@ const WelcomeDashboard = ({ onStartCreating }) => {
             <div>
               <h3 className="text-xl font-chewy text-dark mb-2">Your Creations</h3>
               <p className="text-gray-700">
-                You've created 3 characters and 1 story so far. View and manage your creations.
+                Go to your profile to get back your creations
               </p>
             </div>
           </div>
-          <button className="mt-2 w-full py-3 rounded-full font-bold bg-accent text-dark hover:bg-accent/90 transition flex items-center justify-center">
-            View My Creations
-            <ArrowRight size={18} className="ml-2" />
-          </button>
-        </div>
-      </div>
-      
-      <div className="border-t border-gray-200 pt-8">
-        <h3 className="text-xl font-chewy text-dark mb-4">Featured Creations</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[1, 2, 3, 4].map((item) => (
-            <div key={item} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-              <div className="h-40 bg-gray-100 relative">
-                {/* This would be populated with actual content in production */}
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-accent flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white flex flex-col items-center justify-center">
-                      <div className="flex gap-2 mb-1">
-                        <div className="w-2 h-2 rounded-full bg-dark"></div>
-                        <div className="w-2 h-2 rounded-full bg-dark"></div>
-                      </div>
-                      <div className="w-4 h-2 bg-dark rounded-b-full"></div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="absolute top-2 right-2 bg-white rounded-full p-1.5 shadow-sm">
-                  <Heart size={14} className="text-primary-500" />
-                </div>
-              </div>
-              
-              <div className="p-3">
-                <h4 className="font-medium text-dark">Featured Character {item}</h4>
-                <p className="text-xs text-gray-500">Created 3 days ago</p>
-              </div>
-            </div>
-          ))}
+          <Link to='/profile'>
+            <button className="mt-2 w-full py-3 rounded-full font-bold bg-accent text-dark hover:bg-accent/90 transition flex items-center justify-center">
+              View My Creations
+              <ArrowRight size={18} className="ml-2" />
+            </button>
+          </Link>
         </div>
       </div>
     </div>

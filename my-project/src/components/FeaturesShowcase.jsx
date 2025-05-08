@@ -1,311 +1,227 @@
-// FeaturesShowcase.jsx
+// FeaturesShowcase.jsx - Modified for Storybook Features
 import React from 'react';
+import { Sparkles, Palette, PenTool, Wand2, Edit, Download } from 'lucide-react';
+import pic1 from '../../public/showcase4.jpg'
+import { Link } from 'react-router-dom';
 
 const FeaturesShowcase = () => {
+  // Feature data with icons and details
+  const features = [
+    {
+      icon: <Sparkles className="w-8 h-8 text-primary-500" />,
+      title: "Personalized Stories",
+      description: "Include your child's name, appearance, and preferences to make them the hero of their own adventure.",
+      benefits: [
+        "Multiple story themes to choose from",
+        "Custom character traits and preferences",
+        "Age-appropriate narratives and adventures"
+      ],
+      color: "primary"
+    },
+    {
+      icon: <Palette className="w-8 h-8 text-secondary-500" />,
+      title: "Vibrant Illustrations",
+      description: "Every page features stunning, colorful illustrations that bring the story to life and capture your child's imagination.",
+      benefits: [
+        "Bright, engaging color palettes",
+        "Characters based on your child's appearance",
+        "Dynamic scenes that enhance the storytelling"
+      ],
+      color: "secondary"
+    },
+    {
+      icon: <PenTool className="w-8 h-8 text-accent" />,
+      title: "Simple Story Creation",
+      description: "Our intuitive interface makes crafting beautiful storybooks easy - no writing or design skills needed.",
+      benefits: [
+        "AI-powered story generation",
+        "Pre-written templates to customize",
+        "Simple drag-and-drop interface"
+      ],
+      color: "accent"
+    },
+    {
+      icon: <Wand2 className="w-8 h-8 text-accent2" />,
+      title: "Themed Storybooks",
+      description: "Choose from a variety of exciting themes like space adventures, underwater journeys, fairy tales, and more.",
+      benefits: [
+        "Educational themes with learning opportunities",
+        "Seasonal and holiday special themes",
+        "Fantasy and adventure narratives"
+      ],
+      color: "accent2"
+    },
+    {
+      icon: <Edit className="w-8 h-8 text-primary-500" />,
+      title: "Easy Editing & Saving",
+      description: "Make changes anytime, save multiple versions, and revisit your creations whenever you want.",
+      benefits: [
+        "Cloud storage for all your storybooks",
+        "Real-time preview as you edit",
+        "Share drafts with family before finalizing"
+      ],
+      color: "primary"
+    },
+    {
+      icon: <Download className="w-8 h-8 text-secondary-500" />,
+      title: "Multiple Formats",
+      description: "Download your storybooks as digital PDFs or order professional printed copies delivered to your door.",
+      benefits: [
+        "High-quality print options",
+        "Digital versions for tablets and e-readers",
+        "Gift packaging available for printed books"
+      ],
+      color: "secondary"
+    }
+  ];
+
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-gradient-primary overflow-hidden relative">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-primary-300/20 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-secondary-300/20 translate-x-1/3 translate-y-1/3"></div>
+      <div className="absolute top-1/2 right-20 w-20 h-20 rounded-full bg-accent/20"></div>
+      <div className="absolute bottom-1/4 left-20 w-16 h-16 rounded-full bg-accent2/20"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-chewy text-dark mb-4">Powerful Features</h2>
+          <div className="inline-block bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full text-lg font-bold mb-6 border-2 border-primary-100">
+            <Sparkles size={16} className="inline-block mr-2 text-primary-500" />
+            Magical Storybook Features
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-chewy text-dark mb-4 drop-shadow-[2px_2px_0px_rgba(61,29,140,0.3)]">
+            Create Enchanting Stories With Ease
+          </h2>
+          
           <p className="text-xl max-w-3xl mx-auto text-gray-600">
-            Our advanced AI technologies work together to create stunning animated characters from your photos
+            Our platform makes it simple to create personalized, vibrant storybooks that will delight your child and become treasured keepsakes.
           </p>
         </div>
         
-        {/* Feature 1: Portrait Upload */}
-        <div className="flex flex-col md:flex-row items-center mb-24">
-          <div className="w-full md:w-1/2 md:pr-12 mb-10 md:mb-0">
-            <div className="bg-light rounded-3xl p-8 relative overflow-hidden">
-              <div className="absolute -right-10 -top-10 w-32 h-32 bg-primary-500/20 rounded-full"></div>
-              <div className="absolute -left-16 -bottom-16 w-48 h-48 bg-accent/10 rounded-full"></div>
+        {/* Features grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {features.map((feature, index) => (
+            <div 
+              key={index} 
+              className="bg-white rounded-2xl shadow-lg p-6 transform transition-transform duration-300 hover:-translate-y-2"
+            >
+              <div className={`w-16 h-16 rounded-2xl bg-${feature.color}-100 flex items-center justify-center mb-6`}>
+                {feature.icon}
+              </div>
               
-              <div className="relative">
-                <span className="inline-block bg-primary-500 text-white text-sm font-bold px-3 py-1 rounded-full mb-4">Step 1</span>
-                <h3 className="text-3xl font-chewy text-dark mb-4">Smart Portrait Processing</h3>
-                <p className="text-gray-600 mb-6">
-                  Our system handles all types of portrait photos, optimizing them for the perfect cartoon transformation. Simply upload your picture and our AI will do the rest.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
+              <h3 className="text-2xl font-chewy text-dark mb-3">{feature.title}</h3>
+              
+              <p className="text-gray-600 mb-6">{feature.description}</p>
+              
+              <ul className="space-y-3">
+                {feature.benefits.map((benefit, idx) => (
+                  <li key={idx} className="flex items-start">
                     <div className="w-5 h-5 rounded-full bg-accent2 flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-dark text-xs font-bold">✓</span>
                     </div>
-                    <span className="ml-2 text-gray-700">Works with selfies, professional photos, and more</span>
+                    <span className="ml-2 text-gray-700">{benefit}</span>
                   </li>
-                  <li className="flex items-start">
-                    <div className="w-5 h-5 rounded-full bg-accent2 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-dark text-xs font-bold">✓</span>
-                    </div>
-                    <span className="ml-2 text-gray-700">Automatic facial feature detection</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="w-5 h-5 rounded-full bg-accent2 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-dark text-xs font-bold">✓</span>
-                    </div>
-                    <span className="ml-2 text-gray-700">Privacy-focused processing with data encryption</span>
-                  </li>
-                </ul>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        
+        {/* Feature highlight - Visual showcase */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-primary-100 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-3xl font-chewy text-dark mb-4">
+                Watch Your Stories Come To Life
+              </h3>
+              
+              <p className="text-gray-600 mb-6">
+                Our magical storybooks blend your child's photos with vibrant illustrations to create a truly personalized reading experience. Each page is designed to engage, delight, and inspire young readers.
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold">1</div>
+                  <span className="text-gray-700">Upload your child's photo</span>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-secondary-500 flex items-center justify-center text-white font-bold">2</div>
+                  <span className="text-gray-700">Choose a story theme and personalize details</span>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-dark font-bold">3</div>
+                  <span className="text-gray-700">Preview and edit your storybook</span>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-accent2 flex items-center justify-center text-dark font-bold">4</div>
+                  <span className="text-gray-700">Download or order a printed copy</span>
+                </div>
               </div>
             </div>
-          </div>
-          
-          <div className="w-full md:w-1/2">
+            
             <div className="relative">
-              {/* Main image - a portrait upload interface */}
-              <div className="bg-white rounded-lg shadow-xl overflow-hidden">
-                <div className="border-b border-gray-200 py-3 px-4 flex items-center">
-                  <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                  <div className="mx-auto text-sm text-gray-500">Upload Portrait</div>
+              {/* Storybook preview with page flipping effect */}
+              <div className="relative mx-auto w-full max-w-sm">
+                {/* Book cover */}
+                <div className="bg-primary-500 rounded-lg shadow-lg p-4 transform rotate-3 relative z-20">
+                  <div className="bg-white rounded p-3">
+                    <div className="aspect-[3/4] bg-gradient-to-br from-accent to-secondary-400 rounded relative overflow-hidden">
+                      {/* Add cover image here as a background */}
+                      <img 
+                        src={pic1}// Replace with your actual cover image path
+                        alt="Space Adventure Cover"
+                        className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
+                      />
+                      
+                      {/* Semi-transparent overlay to ensure text remains readable */}
+                      <div className="absolute inset-0"></div>
+                      
+                      <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                        <h4 className="text-2xl font-chewy text-white drop-shadow-[1px_1px_0px_rgba(0,0,0,0.3)] mb-2 z-10">
+                          Emma's Space Adventure
+                        </h4>
+                        <p className="text-white text-sm font-medium drop-shadow-md">A personalized adventure</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-6 bg-gray-50">
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <p className="text-gray-500 mb-4">Drag and drop your portrait here or</p>
-                    <button className="px-4 py-2 bg-primary-500 text-white rounded-full text-sm font-semibold">Browse Files</button>
+                
+                {/* Peeking page 1 */}
+                <div className="absolute top-2 left-2 right-2 bg-white rounded-lg shadow-lg p-4 transform rotate-1 z-10">
+                  <div className="aspect-[3/4] bg-light rounded relative overflow-hidden">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+                      <p className="text-xs text-gray-600 font-medium mb-2">Once upon a time...</p>
+                    </div>
                   </div>
-                  <div className="mt-6">
-                    <p className="text-xs text-gray-500 mb-2">Portrait requirements:</p>
-                    <ul className="text-xs text-gray-500 list-disc pl-5 space-y-1">
-                      <li>Clear frontal face view</li>
-                      <li>Good lighting conditions</li>
-                      <li>Supported formats: JPG, PNG, HEIC</li>
-                    </ul>
-                  </div>
+                </div>
+                
+                {/* Peeking page 2 */}
+                <div className="absolute top-4 left-4 right-4 bg-white rounded-lg shadow-lg p-4 transform rotate-0 z-0">
+                  <div className="aspect-[3/4] bg-light rounded"></div>
                 </div>
               </div>
               
               {/* Decorative elements */}
               <div className="absolute -top-6 -right-6 w-24 h-24 bg-accent rounded-full opacity-20"></div>
-              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-primary-300 rounded-full opacity-20"></div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Feature 2: AI Transformation */}
-        <div className="flex flex-col md:flex-row-reverse items-center mb-24">
-          <div className="w-full md:w-1/2 md:pl-12 mb-10 md:mb-0">
-            <div className="bg-light rounded-3xl p-8 relative overflow-hidden">
-              <div className="absolute -left-10 -top-10 w-32 h-32 bg-secondary-500/20 rounded-full"></div>
-              <div className="absolute -right-16 -bottom-16 w-48 h-48 bg-accent/10 rounded-full"></div>
-              
-              <div className="relative">
-                <span className="inline-block bg-secondary-500 text-white text-sm font-bold px-3 py-1 rounded-full mb-4">Step 2</span>
-                <h3 className="text-3xl font-chewy text-dark mb-4">Leonardo AI Transformation</h3>
-                <p className="text-gray-600 mb-6">
-                  Our state-of-the-art Leonardo AI transforms your portrait into a cartoon character while preserving your unique features and personality.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <div className="w-5 h-5 rounded-full bg-accent2 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-dark text-xs font-bold">✓</span>
-                    </div>
-                    <span className="ml-2 text-gray-700">Multiple cartoon styles to choose from</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="w-5 h-5 rounded-full bg-accent2 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-dark text-xs font-bold">✓</span>
-                    </div>
-                    <span className="ml-2 text-gray-700">Preserves your unique facial characteristics</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="w-5 h-5 rounded-full bg-accent2 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-dark text-xs font-bold">✓</span>
-                    </div>
-                    <span className="ml-2 text-gray-700">Advanced color matching and enhancement</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div className="w-full md:w-1/2">
-            <div className="relative">
-              {/* Main image - transformation comparison */}
-              <div className="flex items-center justify-between bg-white rounded-lg shadow-xl p-6">
-                <div className="w-5/12">
-                  <div className="aspect-square rounded-lg overflow-hidden bg-gray-200 mb-2">
-                    {/* Placeholder for real photo */}
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text-center text-sm font-medium text-gray-700">Original Photo</div>
-                </div>
-                
-                <div className="flex flex-col items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                  <div className="text-xs text-primary-500 font-medium mt-1">Leonardo AI</div>
-                </div>
-                
-                <div className="w-5/12">
-                  <div className="aspect-square rounded-lg overflow-hidden bg-accent/20 mb-2">
-                    {/* Placeholder for cartoon */}
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="w-24 h-24 rounded-full bg-accent flex items-center justify-center">
-                        <div className="w-16 h-16 rounded-full bg-white flex flex-col items-center justify-center">
-                          <div className="flex gap-2 mb-1">
-                            <div className="w-2 h-2 rounded-full bg-dark"></div>
-                            <div className="w-2 h-2 rounded-full bg-dark"></div>
-                          </div>
-                          <div className="w-5 h-2 bg-dark rounded-b-full"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-center text-sm font-medium text-gray-700">Cartoon Version</div>
-                </div>
-              </div>
-              
-              {/* Style options below */}
-              <div className="mt-4 bg-white rounded-lg shadow-lg p-4">
-                <div className="text-center text-sm font-medium text-gray-700 mb-3">Available Styles</div>
-                <div className="flex justify-between">
-                  <div className="w-16">
-                    <div className="w-12 h-12 mx-auto rounded-full bg-primary-500 mb-1 flex items-center justify-center">
-                      <div className="w-8 h-8 rounded-full bg-white"></div>
-                    </div>
-                    <div className="text-center text-xs text-gray-600">Cute</div>
-                  </div>
-                  <div className="w-16">
-                    <div className="w-12 h-12 mx-auto rounded-full bg-secondary-500 mb-1 flex items-center justify-center">
-                      <div className="w-8 h-8 rounded-full bg-white"></div>
-                    </div>
-                    <div className="text-center text-xs text-gray-600">Anime</div>
-                  </div>
-                  <div className="w-16">
-                    <div className="w-12 h-12 mx-auto rounded-full bg-accent mb-1 flex items-center justify-center">
-                      <div className="w-8 h-8 rounded-full bg-white"></div>
-                    </div>
-                    <div className="text-center text-xs text-gray-600">Comic</div>
-                  </div>
-                  <div className="w-16">
-                    <div className="w-12 h-12 mx-auto rounded-full bg-accent2 mb-1 flex items-center justify-center">
-                      <div className="w-8 h-8 rounded-full bg-white"></div>
-                    </div>
-                    <div className="text-center text-xs text-gray-600">Pixel</div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-secondary-500 rounded-full opacity-20"></div>
-              <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-accent rounded-full opacity-20"></div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Feature 3: Animation */}
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="w-full md:w-1/2 md:pr-12 mb-10 md:mb-0">
-            <div className="bg-light rounded-3xl p-8 relative overflow-hidden">
-              <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/20 rounded-full"></div>
-              <div className="absolute -left-16 -bottom-16 w-48 h-48 bg-primary-500/10 rounded-full"></div>
-              
-              <div className="relative">
-                <span className="inline-block bg-accent text-dark text-sm font-bold px-3 py-1 rounded-full mb-4">Step 3</span>
-                <h3 className="text-3xl font-chewy text-dark mb-4">Kling AI Animation</h3>
-                <p className="text-gray-600 mb-6">
-                  Bring your cartoon character to life with our Kling AI technology that adds natural, customizable animations.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <div className="w-5 h-5 rounded-full bg-accent2 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-dark text-xs font-bold">✓</span>
-                    </div>
-                    <span className="ml-2 text-gray-700">Library of animations: waving, talking, dancing & more</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="w-5 h-5 rounded-full bg-accent2 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-dark text-xs font-bold">✓</span>
-                    </div>
-                    <span className="ml-2 text-gray-700">Smooth, natural movement patterns</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="w-5 h-5 rounded-full bg-accent2 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-dark text-xs font-bold">✓</span>
-                    </div>
-                    <span className="ml-2 text-gray-700">Export as GIF, MP4 or WebM for any platform</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div className="w-full md:w-1/2">
-            <div className="relative">
-              {/* Main image - animation control panel */}
-              <div className="bg-white rounded-lg shadow-xl overflow-hidden">
-                <div className="border-b border-gray-200 py-3 px-4 flex items-center">
-                  <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                  <div className="mx-auto text-sm text-gray-500">Animation Panel</div>
-                </div>
-                
-                <div className="p-6 bg-gray-50">
-                  {/* Animation preview area */}
-                  <div className="bg-gray-200 rounded-lg h-48 mb-4 flex items-center justify-center">
-                    <div className="w-28 h-28 rounded-full bg-accent animate-bounce">
-                      <div className="w-full h-full flex items-center justify-center">
-                        <div className="w-20 h-20 rounded-full bg-white flex flex-col items-center justify-center">
-                          <div className="flex gap-3 mb-2">
-                            <div className="w-3 h-3 rounded-full bg-dark"></div>
-                            <div className="w-3 h-3 rounded-full bg-dark"></div>
-                          </div>
-                          <div className="w-6 h-3 bg-dark rounded-b-full"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Animation controls */}
-                  <div className="mb-4">
-                    <div className="text-sm font-medium text-gray-700 mb-2">Animation Style</div>
-                    <div className="flex space-x-2 mb-4">
-                      <button className="px-3 py-1 bg-primary-500 text-white text-xs rounded-full">Wave</button>
-                      <button className="px-3 py-1 bg-gray-200 text-gray-700 text-xs rounded-full">Jump</button>
-                      <button className="px-3 py-1 bg-gray-200 text-gray-700 text-xs rounded-full">Dance</button>
-                      <button className="px-3 py-1 bg-gray-200 text-gray-700 text-xs rounded-full">Talk</button>
-                      <button className="px-3 py-1 bg-gray-200 text-gray-700 text-xs rounded-full">Wink</button>
-                    </div>
-                    
-                    <div className="flex items-center justify-between text-sm font-medium text-gray-700 mb-2">
-                      <span>Animation Speed</span>
-                      <span>1.0x</span>
-                    </div>
-                    <input type="range" className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
-                  </div>
-                  
-                  {/* Export options */}
-                  <div className="flex justify-between">
-                    <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded text-sm font-medium">Preview</button>
-                    <button className="px-4 py-2 bg-accent text-dark rounded text-sm font-medium">Export Animation</button>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-accent2 rounded-full opacity-20"></div>
-              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-accent rounded-full opacity-20"></div>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary-300 rounded-full opacity-30"></div>
             </div>
           </div>
         </div>
         
         {/* CTA */}
-        <div className="mt-20 text-center">
-          <h3 className="text-2xl md:text-3xl font-chewy text-dark mb-6">Ready to Create Your Animated Character?</h3>
-          <button className="px-8 py-4 bg-primary-500 text-white font-chewy text-xl rounded-full shadow-lg hover:-translate-y-1 transform transition duration-200">
-            Get Started Now
-          </button>
+        <div className="text-center">
+          <h3 className="text-2xl md:text-3xl font-chewy text-dark mb-6">Ready to Create a Magical Storybook?</h3>
+          <Link to='/signup'>
+            <button className="px-8 py-4 bg-accent text-dark font-chewy text-xl rounded-full shadow-button hover:-translate-y-1 transform transition duration-200">
+              Start Creating Now
+            </button>
+          </Link>
+          <p className="mt-4 text-white">No design skills needed — just bring your imagination!</p>
         </div>
       </div>
     </section>

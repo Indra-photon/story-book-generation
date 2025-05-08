@@ -34,12 +34,13 @@ const StoryCreation = () => {
     console.log("handleChildChoice called with:", includeChild);
     setStoryData({
       ...storyData,
-      includeChild
+      includeChild : false
     });
     
     console.log("Setting currentStep to:", includeChild ? 2 : 3);
     // If user wants to include child, go to character form, otherwise to story type
-    setCurrentStep(includeChild ? 2 : 3);
+    // setCurrentStep(includeChild ? 2 : 3);
+    setCurrentStep(3)
   };
 
   // Handle child character form submission
@@ -77,9 +78,22 @@ const StoryCreation = () => {
   };
 
   // Go back to previous step or dashboard
+  // const handleBack = () => {
+  //   if (currentStep === 1) {
+  //     navigate('/work-area');
+  //   } else {
+  //     setCurrentStep(currentStep - 1);
+  //   }
+  // };
+
+  // Go back to previous step or dashboard
   const handleBack = () => {
     if (currentStep === 1) {
       navigate('/work-area');
+    } else if (currentStep === 3) {
+      // If we're at the story type selection step (3), go back to the first step (1)
+      // instead of the child character form (2)
+      setCurrentStep(1);
     } else {
       setCurrentStep(currentStep - 1);
     }

@@ -13,6 +13,8 @@ import Dashboard from './pages/Dashboard.jsx'
 import PathwaySelection from './components/PathwaySelection.jsx'
 import StoryCreation from './components/StoryCreation.jsx'
 import CharacterCreation from './components/CharacterCreation.jsx'
+import VerifyEmail from './pages/VerifyEmail.jsx'
+import StoryEditor from './components/StoryEditor.jsx'
 
 function App() {
   const dispatch = useDispatch()
@@ -46,7 +48,8 @@ function App() {
         <Route path='/path-selection' element={<PathwaySelection />} />
         <Route path='/story-creation' element={<StoryCreation />} />
         <Route path='/character-creation' element={<CharacterCreation />} />
-
+        <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route path="/edit-story/:storyId" element={<StoryEditor />} />
       </Routes>
      </main>
     </>

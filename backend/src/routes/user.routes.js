@@ -10,6 +10,7 @@ import {
   updateUserAvatar,
   requestPasswordReset,
   resetForgotPassword,
+  requestEmailVerification,
   verifyEmail,
   upgradeSubscription
 } from '../controllers/user.controller.js';
@@ -29,6 +30,7 @@ router.route("/verify-email/:token").get(verifyEmail);
 router.route("/logout").post(verifyJWT, logoutUser);
 router.route("/me").get(verifyJWT, getCurrentUser);
 router.route("/update-account").patch(verifyJWT, updateAccountDetails);
+router.route("/send-verification-email").post(verifyJWT, requestEmailVerification)
 router.route("/update-avatar").patch(
   verifyJWT,
   upload.single('avatar'),

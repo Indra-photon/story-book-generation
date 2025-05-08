@@ -83,10 +83,10 @@ const Navbar = () => {
         <div className="py-4 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold">
-              C
+            <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center text-black font-bold">
+              S
             </div>
-            <span className="text-2xl font-chewy text-primary-500">CharaFun</span>
+            <span className="text-2xl font-chewy text-black">StoryMorph</span>
           </Link>
           
           {/* Desktop Navigation */}
