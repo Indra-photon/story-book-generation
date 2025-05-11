@@ -33,12 +33,37 @@ const storyGenerationLimiter = rateLimit({
 // app.use(globalLimiter);
 // origin: "http://localhost:5173",
 console.log(process.env.FRONTEND_URL)
+// app.use(cors({
+//     origin : process.env.FRONTEND_URL,
+//     credentials: true,
+//     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization',  "Cookie"]
+// }))
+
 app.use(cors({
-    origin : process.env.FRONTEND_URL,
+    origin: function(origin, callback) {
+        const allowedOrigins = [
+            'https://story-book-generation-negv.vercel.app',
+            'http://localhost:5173',
+            'https://story-book-generation-negv-git-master-indranil-maitis-projects.vercel.app'
+        ];
+        // Allow requests with no origin (like mobile apps, curl requests)
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            console.log('Origin blocked by CORS:', origin);
+            callback(null, false);
+        }
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization',  "Cookie"]
-}))
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
+}));
+
+app.use((req, res, next) => {
+    console.log('Incoming request from origin:', req.headers.origin);
+    next();
+});
 
 // common middleware
 app.use(express.json({limit: "50mb"}))  // Increase from current 16kb
