@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import WelcomeDashboard from '../components/WelcomeDashboard';
+import WelcomeDashboard from '../components/WelcomeDashBoard';
 import PathwaySelection from '../components/PathwaySelection';
 
 const Dashboard = () => {
