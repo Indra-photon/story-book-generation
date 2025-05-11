@@ -2,7 +2,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Login from './components/Login'
 import {Route, Routes, useNavigate, Outlet } from 'react-router-dom'
-import Signup from './components/SignUp'
+import Signup from './components/Signup'
 import {login, logout} from "./store/authSlice.js"
 import { useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
