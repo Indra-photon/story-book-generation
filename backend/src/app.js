@@ -54,24 +54,36 @@ app.use((req, res, next) => {
 app.use(cors({
     origin: function(origin, callback) {
         console.log('Evaluating CORS for origin:', origin);
-        const allowedOrigins = [
-            'https://story-book-generation-negv.vercel.app',
-            'http://localhost:5173',
-            'https://story-book-generation-negv-git-master-indranil-maitis-projects.vercel.app',
-            'https://story-book-generation-negv-dmv9lmd40-indranil-maitis-projects.vercel.app'
-        ];
         
-        // Allow requests with no origin (like mobile apps, curl requests, or direct browser requests)
+        // Allow requests with no origin
         if (!origin) {
             console.log('Request has no origin, allowing');
             callback(null, true);
-        } else if (allowedOrigins.indexOf(origin) !== -1) {
-            console.log('Origin is in allowed list, allowing:', origin);
-            callback(null, true);
-        } else {
-            console.log('Origin blocked by CORS:', origin);
-            callback(new Error('Not allowed by CORS'));
+            return;
         }
+        
+        // Allow all Vercel preview deployments
+        if (origin.includes('story-book-generation-negv') && 
+            (origin.includes('vercel.app') || origin.endsWith('.vercel.app'))) {
+            console.log('Allowing Vercel deployment:', origin);
+            callback(null, true);
+            return;
+        }
+        
+        // Allow specific origins
+        const allowedOrigins = [
+            'https://story-book-generation-negv.vercel.app',
+            'http://localhost:5173'
+        ];
+        
+        if (allowedOrigins.includes(origin)) {
+            console.log('Origin in allowed list:', origin);
+            callback(null, true);
+            return;
+        }
+        
+        console.log('Origin blocked by CORS:', origin);
+        callback(new Error('Not allowed by CORS'));
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
