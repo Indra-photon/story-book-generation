@@ -32,8 +32,9 @@ const storyGenerationLimiter = rateLimit({
 
 // app.use(globalLimiter);
 // origin: "http://localhost:5173",
+console.log(process.env.FRONTEND_URL)
 app.use(cors({
-    origin : "https://story-book-generation-negv.vercel.app/",
+    origin : process.env.FRONTEND_URL,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization',  "Cookie"]
