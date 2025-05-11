@@ -8,198 +8,6 @@ import axios from "axios";
 import Replicate from "replicate";
 import mongoose from 'mongoose'
 
-
-// const generateStoryPrompt = asyncHandler(async (req, res) => {
-//   try {
-//     const { includeChild, childCharacter, storyType } = req.body;
-//     const userId = req.user._id;
-    
-//     // Validate input
-//     if (storyType === undefined) {
-//       throw new Apierror(400, "Story type is required");
-//     }
-    
-//     if (includeChild && (!childCharacter || !childCharacter.name)) {
-//       throw new Apierror(400, "Child character information is required when you want to include your child");
-//     }
-    
-//     // Construct the prompt for story generation
-//     let prompt = `Create a ${storyType} story `;
-    
-//     if (includeChild) {
-//       prompt += `featuring a character named ${childCharacter.name}, who is a ${childCharacter.age}-year-old ${childCharacter.gender?.toLowerCase() || 'child'}. `;
-      
-//       if (childCharacter.appearance) {
-//         prompt += `The character appearance is: ${childCharacter.appearance}. `;
-//       }
-      
-//       if (childCharacter.personality) {
-//         prompt += `The character personality is: ${childCharacter.personality}. `;
-//       }
-//     } else {
-//       prompt += `for kids aged 4-8 years old. `;
-//     }
-    
-//     prompt += `
-
-// Format the response as a JSON object with the following structure:
-// {
-//   "title": "Story Title",
-//   "introduction": "Story introduction paragraph",
-//   "conclusion": "Story conclusion paragraph",
-//   "storyStyleGuide": {
-//     "artStyle": "Choose ONE consistent art style (e.g., '3D Pixar animated style')",
-//     "colorPalette": "Define 5-7 main colors that will appear consistently throughout all scenes",
-//     "lighting": "Define consistent lighting approach across all scenes",
-//     "cameraAngle": "Define preferred camera angles/perspectives to maintain consistency"
-//   },
-
-//   "characters": [
-//     {
-//       "name": "Character Name",
-//       "type": "hero/friend/pet/etc",
-//       "description": "Brief character description",
-//       "visualReference": {
-//         "exactAppearance": "Comprehensive visual description that will be used in EVERY scene"
-//       }
-//     }
-//   ],
-//   "scenes": [
-//     {
-//       "title": "Scene Title",
-//       "text": "7-8 sentences with simple language that clearly connect to previous scene. Use character names here.",
-//       "visualDescription": "A STANDALONE visual description limited to maximum 200 words. Do NOT use character 
-//       names but instead describe by appearance (e.g., 'a girl with auburn hair in a green jacket' instead of 
-//       'Mira'). Include settings, character appearances, lighting, and composition in a cohesive paragraph. 
-//       End with: 3D pixar animated style, vibrant colors, realistic lighting"
-//     }
-//   ]
-//   "coverPagescene":{
-//   "visualDescription": "A STANDALONE visual description that will be used for the cover page. Use Main Character description here along their appearance.
-//   Include settings, character appearances, lighting, and composition in a cohesive paragraph. 
-//   End with: 3D pixar animated style, vibrant colors, realistic lighting. Do not use character names. This will be used to generate image for the cover page"
-//   },
-//   "endPagescene":{
-//   "visualDescription": "A STANDALONE visual description that will be used for the end page."
-//   }
-// }
-
-// IMPORTANT VISUAL CONTINUITY RULES:
-// 1. NEVER use character names in visual descriptions - always use full visual descriptions of each character
-// 2. Each visual description must be completely STANDALONE for an image generator that sees only that text
-// 3. Maintain exact same clothing, hairstyles, and identifying features for characters across all scenes
-// 4. Include specific visual elements from previous scenes to create continuity
-// 5. Maintain consistent art style, lighting approach, and color palette throughout
-// 6. Keep ALL visual descriptions under 200 words
-
-// Remember: Each visual description will be processed individually by an AI image generator with no knowledge 
-// of other scenes or character names. They must work independently while creating visually consistent results.`;
-    
-//     const system_prompt = `You are a helpful AI assistant that creates engaging stories for kids and helps me create colorful story books for kids. 
-// The story should be suitable for children aged 4-8 years old. The story should be fun and engaging, with a clear beginning, middle, and end. 
-// The story should also have a moral or lesson that is appropriate for children. The story should be written in a way that is easy for children to understand 
-// and follow along with. The story should be imaginative and creative, with interesting characters and settings. The story should also be age-appropriate and 
-// not contain any violence or inappropriate content. 
-
-// Example of a story:  
-// Anaya loves to play in the park. Today, the sun is shining, and she can't wait to see her animal friends. As Anaya enters the park, she sees Benny the bunny hopping towards her. 'Hello, Benny!' she calls out.
-// Benny the bunny hops over. 'Let's go to the swings!' Anaya says. Benny nods excitedly.Anaya and Benny take turns swinging high in the air. They laugh and giggle as they soar through the sky.
-// Next, they head to the slide, where Fiona the fox is waiting. 'Hello, Fiona!' Anaya shouts.Anaya, Benny, and Fiona all slide down together. They laugh as they zoom down the slippery slide.
-// Suddenly, Timmy the turtle arrives, carrying a picnic basket. 'Let's have a picnic!' he suggests.They all sit down on the blanket and enjoy a delicious picnic together. They share sandwiches and fruit.
-//   After the picnic, Anaya leads her friends to a magical fairy garden hidden behind the trees.In the fairy garden, they meet Luna the ladybug, who grants them a magical wish.
-//   Anaya wishes for everyone to always be happy and play together forever. Luna grants the wish with a twinkle.As the sun sets, Anaya and her friends say goodbye and promise to play together again tomorrow.
-
-// `;
-    
-//     // Check if Replicate API key is available
-//     if (!process.env.REPLICATE_API_TOKEN) {
-//       console.error("Missing REPLICATE_API_TOKEN environment variable");
-//       throw new Error("Replicate API key not configured");
-//     }
-    
-    
-//     // Initialize Replicate with API token
-//     const replicate = new Replicate({
-//       auth: process.env.REPLICATE_API_TOKEN,
-//     });
-    
-//     // Prepare input for Claude
-//     const input = {
-//       prompt: prompt,
-//       max_tokens: 8192,
-//       system: system_prompt,
-//       temperature: 0.9,
-//     };
-    
-//     // console.log("Sending request to Replicate/Claude API...");
-    
-//     // Call Replicate API with Claude model
-//     let fullResponse = "";
-    
-//     try {
-//       // For non-streaming approach (more reliable)
-//       const output = await replicate.run(
-//         "anthropic/claude-3.7-sonnet",
-//         { input }
-//       );
-      
-//       fullResponse = output.join("");
-      
-//     } catch (apiError) {
-//       console.error("Error calling Replicate API:", apiError);
-//       throw new Error(`Failed to call Replicate API: ${apiError.message}`);
-//     }
-    
-//     // Try to parse JSON from the response
-//     let generatedContent;
-//     try {
-//       const jsonMatch = fullResponse.match(/\{[\s\S]*\}/);
-//       if (jsonMatch) {
-//         const jsonString = jsonMatch[0];
-//         console.log("Extracted JSON string:", jsonString.substring(0, 100) + "...");
-//         generatedContent = JSON.parse(jsonString);
-//         // console.log("Parsed JSON successfully:", generatedContent);
-//         // console.log(generatedContent.coverPagescene.visualDescription);
-//       } else {
-//         throw new Error("No valid JSON found in response");
-//       }
-//     } catch (parseError) {
-//       console.error("Error parsing JSON from Claude response:", parseError);
-//       console.log("Raw response preview:", fullResponse.substring(0, 200) + "...");
-//       throw new Error("Failed to parse story format from AI response");
-//     }
-    
-//     console.log("Successfully parsed story data with", 
-//       generatedContent.scenes?.length || 0, "scenes and", 
-//       generatedContent.characters?.length || 0, "characters");
-    
-//     return res.status(200).json(
-//       new Apiresponse(200, generatedContent, "Story prompt generated successfully")
-//     );
-//   } catch (error) {
-//     console.error("Story generation error:", error);
-//     console.error("Error details:", error.stack);
-    
-//     // // For development, fallback to a mock response
-//     // if (process.env.NODE_ENV === 'development' && process.env.USE_MOCK_RESPONSES === 'true') {
-//     //   console.log("Using fallback mock response due to error");
-      
-//     //   const mockAIResponse = getMockStoryResponse(req.body);
-      
-//     //   return res.status(200).json(
-//     //     new Apiresponse(200, mockAIResponse, "Story prompt generated successfully (mock)")
-//     //   );
-//     // }
-    
-//     // // If it's an API error or other known error, return 500 with details
-//     return res.status(500).json(
-//       new Apiresponse(500, null, error.message || "Failed to generate story")
-//     );
-//   }
-// });
-
-// Helper function to generate mock responses for development
-
 function getMockStoryResponse({ includeChild, childCharacter, storyType }) {
   return {
     title: `${includeChild ? childCharacter.name + "'s " : "The "}Amazing ${storyType.charAt(0).toUpperCase() + storyType.slice(1)} Adventure`,
@@ -266,166 +74,6 @@ function getMockStoryResponse({ includeChild, childCharacter, storyType }) {
   };
 }
 
-// const generateStoryPrompt = asyncHandler(async (req, res) => {
-//   try {
-//     const { includeChild, childCharacter, storyType } = req.body;
-//     const userId = req.user._id;
-
-//     // User verification and input validation will remain here
-//     const user = await User.findById(userId);
-
-//     if (!user) {
-//         throw new Apierror(404, "User not found");
-//     }
-
-//     // Check email verification
-//     if (!user.isEmailVerified) {
-//         throw new Apierror(403, "Please verify your email before generating a story");
-//     }
-
-//     // Existing input validations
-//     if (storyType === undefined) {
-//       throw new Apierror(400, "Story type is required");
-//     }
-    
-//     if (includeChild && (!childCharacter || !childCharacter.name)) {
-//       throw new Apierror(400, "Child character information is required when you want to include your child");
-//     }
-
-//     // Construct the prompt for story generation
-//     let prompt = `Create a ${storyType} story `;
-    
-//     if (includeChild) {
-//       prompt += `featuring a character named ${childCharacter.name}, who is a ${childCharacter.age}-year-old ${childCharacter.gender?.toLowerCase() || 'child'}. `;
-      
-//       if (childCharacter.appearance) {
-//         prompt += `The character appearance is: ${childCharacter.appearance}. `;
-//       }
-      
-//       if (childCharacter.personality) {
-//         prompt += `The character personality is: ${childCharacter.personality}. `;
-//       }
-//     } else {
-//       prompt += `for kids aged 4-8 years old. `;
-//     }
-    
-//     prompt += `
-
-// Format the response as a JSON object with the following structure:
-// {
-//   "title": "Story Title",
-//   "introduction": "Story introduction paragraph",
-//   "conclusion": "Story conclusion paragraph",
-//   "storyStyleGuide": {
-//     "artStyle": "Choose ONE consistent art style (e.g., '3D Pixar animated style')",
-//     "colorPalette": "Define 5-7 main colors that will appear consistently throughout all scenes",
-//     "lighting": "Define consistent lighting approach across all scenes",
-//     "cameraAngle": "Define preferred camera angles/perspectives to maintain consistency"
-//   },
-
-//   "characters": [
-//     {
-//       "name": "Character Name",
-//       "type": "hero/friend/pet/etc",
-//       "description": "Brief character description",
-//       "visualReference": {
-//         "exactAppearance": "Comprehensive visual description that will be used in EVERY scene"
-//       }
-//     }
-//   ],
-//   "scenes": [
-//     {
-//       "title": "Scene Title",
-//       "text": "7-8 sentences with simple language that clearly connect to previous scene. Use character names here.",
-//       "visualDescription": "A STANDALONE visual description limited to maximum 200 words. Do NOT use character 
-//       names but instead describe by appearance (e.g., 'a girl with auburn hair in a green jacket' instead of 
-//       'Mira'). Include settings, character appearances, lighting, and composition in a cohesive paragraph. 
-//       End with: 3D pixar animated style, vibrant colors, realistic lighting"
-//     }
-//   ]
-//   "coverPagescene":{
-//   "visualDescription": "A STANDALONE visual description that will be used for the cover page. Use Main Character description here along their appearance.
-//   Include settings, character appearances, lighting, and composition in a cohesive paragraph. 
-//   End with: 3D pixar animated style, vibrant colors, realistic lighting. Do not use character names. This will be used to generate image for the cover page"
-//   },
-//   "endPagescene":{
-//   "visualDescription": "A STANDALONE visual description that will be used for the end page."
-//   }
-// }
-
-// IMPORTANT VISUAL CONTINUITY RULES:
-// 1. NEVER use character names in visual descriptions - always use full visual descriptions of each character
-// 2. Each visual description must be completely STANDALONE for an image generator that sees only that text
-// 3. Maintain exact same clothing, hairstyles, and identifying features for characters across all scenes
-// 4. Include specific visual elements from previous scenes to create continuity
-// 5. Maintain consistent art style, lighting approach, and color palette throughout
-// 6. Keep ALL visual descriptions under 200 words
-
-// Remember: Each visual description will be processed individually by an AI image generator with no knowledge 
-// of other scenes or character names. They must work independently while creating visually consistent results.`;
-    
-//     const system_prompt = `You are a helpful AI assistant that creates engaging stories for kids and helps me create colorful story books for kids. 
-// The story should be suitable for children aged 4-8 years old. The story should be fun and engaging, with a clear beginning, middle, and end. 
-// The story should also have a moral or lesson that is appropriate for children. The story should be written in a way that is easy for children to understand 
-// and follow along with. The story should be imaginative and creative, with interesting characters and settings. The story should also be age-appropriate and 
-// not contain any violence or inappropriate content. 
-
-// Example of a story:  
-// Anaya loves to play in the park. Today, the sun is shining, and she can't wait to see her animal friends. As Anaya enters the park, she sees Benny the bunny hopping towards her. 'Hello, Benny!' she calls out.
-// Benny the bunny hops over. 'Let's go to the swings!' Anaya says. Benny nods excitedly.Anaya and Benny take turns swinging high in the air. They laugh and giggle as they soar through the sky.
-// Next, they head to the slide, where Fiona the fox is waiting. 'Hello, Fiona!' Anaya shouts.Anaya, Benny, and Fiona all slide down together. They laugh as they zoom down the slippery slide.
-// Suddenly, Timmy the turtle arrives, carrying a picnic basket. 'Let's have a picnic!' he suggests.They all sit down on the blanket and enjoy a delicious picnic together. They share sandwiches and fruit.
-//   After the picnic, Anaya leads her friends to a magical fairy garden hidden behind the trees.In the fairy garden, they meet Luna the ladybug, who grants them a magical wish.
-//   Anaya wishes for everyone to always be happy and play together forever. Luna grants the wish with a twinkle.As the sun sets, Anaya and her friends say goodbye and promise to play together again tomorrow.
-
-// `;
-
-//     // Initialize Replicate and generate story
-//     const replicate = new Replicate({
-//       auth: process.env.REPLICATE_API_TOKEN,
-//     });
-    
-//     const input = {
-//       prompt: prompt,
-//       max_tokens: 8192,
-//       system: system_prompt,
-//       temperature: 0.9,
-//     };
-    
-//     // Generate story content
-//     const output = await replicate.run(
-//       "anthropic/claude-3.7-sonnet",
-//       { input }
-//     );
-    
-//     const fullResponse = output.join("");
-    
-//     // Parse JSON response
-//     let generatedContent;
-//     const jsonMatch = fullResponse.match(/\{[\s\S]*\}/);
-//     if (jsonMatch) {
-//       const jsonString = jsonMatch[0];
-//       generatedContent = JSON.parse(jsonString);
-//     } else {
-//       throw new Error("No valid JSON found in response");
-//     }
-
-//     // Return the generated story content
-//     return res.status(200).json(
-//       new Apiresponse(
-//         200, 
-//         generatedContent, 
-//         "Story prompt generated successfully"
-//       )
-//     );
-
-//   } catch (error) {
-//     console.error("Story generation error:", error);
-//     return res.status(500).json(
-//       new Apiresponse(500, null, error.message || "Failed to generate story")
-//     );
-//   }
-// });
 
 const generateStoryPrompt = asyncHandler(async (req, res) => {
   try {
@@ -479,72 +127,76 @@ const generateStoryPrompt = asyncHandler(async (req, res) => {
     
     prompt += `
 
-Format the response as a JSON object with the following structure:
-{
-  "title": "Story Title",
-  "introduction": "Story introduction paragraph",
-  "conclusion": "Story conclusion paragraph",
-  "storyStyleGuide": {
-    "artStyle": "Choose ONE consistent art style (e.g., '3D Pixar animated style')",
-    "colorPalette": "Define 5-7 main colors that will appear consistently throughout all scenes",
-    "lighting": "Define consistent lighting approach across all scenes",
-    "cameraAngle": "Define preferred camera angles/perspectives to maintain consistency"
-  },
-
-  "characters": [
+    Format the response as a JSON object with the following structure:
     {
-      "name": "Character Name",
-      "type": "hero/friend/pet/etc",
-      "description": "Brief character description",
-      "visualReference": {
-        "exactAppearance": "Comprehensive visual description that will be used in EVERY scene"
+      "title": "Story Title",
+      "introduction": "Story introduction paragraph",
+      "conclusion": "Story conclusion paragraph",
+      "storyStyleGuide": {
+        "artStyle": "Choose ONE consistent art style (e.g., '3D Pixar animated style')",
+        "colorPalette": "Define 5-7 main colors that will appear consistently throughout all scenes",
+        "lighting": "Define consistent lighting approach across all scenes",
+        "cameraAngle": "Define preferred camera angles/perspectives to maintain consistency"
+      },
+
+      "characters": [
+        {
+          "name": "Character Name",
+          "type": "hero/friend/pet/etc",
+          "description": "Brief character description",
+          "visualReference": {
+            "exactAppearance": "Comprehensive visual description that will be used in EVERY scene"
+          }
+        }
+      ],
+      "scenes": [
+        {
+          "title": "Scene Title",
+          "text": "7-8 sentences with simple language that clearly connect to previous scene. Use character names here.",
+          "visualDescription": "A STANDALONE visual description limited to maximum 200 words. Do NOT use character 
+          names but instead describe by appearance (e.g., 'a girl with auburn hair in a green jacket' instead of 
+          'Mira'). Include settings, character appearances, lighting, and composition in a cohesive paragraph. 
+          End with: 3D pixar animated style, vibrant colors, realistic lighting"
+        }
+      ]
+      "coverPagescene":{
+      "visualDescription": "A STANDALONE visual description that will be used for the cover page. Use Main Character description here along their appearance.
+      Include settings, character appearances, lighting, and composition in a cohesive paragraph. 
+      End with: 3D pixar animated style, vibrant colors, realistic lighting. Do not use character names. This will be used to generate image for the cover page"
+      },
+      "endPagescene":{
+      "visualDescription": "A STANDALONE visual description that will be used for the end page."
       }
-    }
-  ],
-  "scenes": [
-    {
-      "title": "Scene Title",
-      "text": "7-8 sentences with simple language that clearly connect to previous scene. Use character names here.",
-      "visualDescription": "A STANDALONE visual description limited to maximum 200 words. Do NOT use character 
-      names but instead describe by appearance (e.g., 'a girl with auburn hair in a green jacket' instead of 
-      'Mira'). Include settings, character appearances, lighting, and composition in a cohesive paragraph. 
-      End with: 3D pixar animated style, vibrant colors, realistic lighting"
-    }
-  ]
-  "coverPagescene":{
-  "visualDescription": "A STANDALONE visual description that will be used for the cover page. Use Main Character description here along their appearance.
-  Include settings, character appearances, lighting, and composition in a cohesive paragraph. 
-  End with: 3D pixar animated style, vibrant colors, realistic lighting. Do not use character names. This will be used to generate image for the cover page"
-  },
-  "endPagescene":{
-  "visualDescription": "A STANDALONE visual description that will be used for the end page."
-  }
-}
-
-IMPORTANT VISUAL CONTINUITY RULES:
-1. NEVER use character names in visual descriptions - always use full visual descriptions of each character
-2. Each visual description must be completely STANDALONE for an image generator that sees only that text
-3. Maintain exact same clothing, hairstyles, and identifying features for characters across all scenes
-4. Include specific visual elements from previous scenes to create continuity
-5. Maintain consistent art style, lighting approach, and color palette throughout
-6. Keep ALL visual descriptions under 200 words
-
-Remember: Each visual description will be processed individually by an AI image generator with no knowledge 
-of other scenes or character names. They must work independently while creating visually consistent results.`;
+    }`;
     
     const system_prompt = `You are a helpful AI assistant that creates engaging stories for kids and helps me create colorful story books for kids. 
-The story should be suitable for children aged 4-8 years old. The story should be fun and engaging, with a clear beginning, middle, and end. 
-The story should also have a moral or lesson that is appropriate for children. The story should be written in a way that is easy for children to understand 
-and follow along with. The story should be imaginative and creative, with interesting characters and settings. The story should also be age-appropriate and 
-not contain any violence or inappropriate content. 
+    The story should be suitable for children aged 4-8 years old. The story should be fun and engaging, with a clear beginning, middle, and end. 
+    The story should also have a moral or lesson that is appropriate for children. The story should be written in a way that is easy for children to understand 
+    and follow along with. The story should be imaginative and creative, with interesting characters and settings. The story should also be age-appropriate and 
+    not contain any violence or inappropriate content. 
 
-Example of a story:  
-Anaya loves to play in the park. Today, the sun is shining, and she can't wait to see her animal friends. As Anaya enters the park, she sees Benny the bunny hopping towards her. 'Hello, Benny!' she calls out.
-Benny the bunny hops over. 'Let's go to the swings!' Anaya says. Benny nods excitedly.Anaya and Benny take turns swinging high in the air. They laugh and giggle as they soar through the sky.
-Next, they head to the slide, where Fiona the fox is waiting. 'Hello, Fiona!' Anaya shouts.Anaya, Benny, and Fiona all slide down together. They laugh as they zoom down the slippery slide.
-Suddenly, Timmy the turtle arrives, carrying a picnic basket. 'Let's have a picnic!' he suggests.They all sit down on the blanket and enjoy a delicious picnic together. They share sandwiches and fruit.
-  After the picnic, Anaya leads her friends to a magical fairy garden hidden behind the trees.In the fairy garden, they meet Luna the ladybug, who grants them a magical wish.
-  Anaya wishes for everyone to always be happy and play together forever. Luna grants the wish with a twinkle.As the sun sets, Anaya and her friends say goodbye and promise to play together again tomorrow.
+    IMPORTANT FOR WRITING THE STORY: (RESTRICTED GUIDELINE)
+    1. You can not use words "mushrooms", "cutting", "knife", "kids", "porn",or any violent words inside the story, story title or story conslusion 
+    2. You can not use words "mushrooms", "cutting", "knife", "kids", "porn", or any violent words inside the visual description of any scene
+
+    IMPORTANT VISUAL CONTINUITY RULES:
+    1. NEVER use character names in visual descriptions - always use full visual descriptions of each character
+    2. Each visual description must be completely STANDALONE for an image generator that sees only that text
+    3. Maintain exact same clothing, hairstyles, and identifying features for characters across all scenes
+    4. Include specific visual elements from previous scenes to create continuity
+    5. Maintain consistent art style, lighting approach, and color palette throughout
+    6. Keep ALL visual descriptions under 200 words
+
+    REMEMBER: Each visual description will be processed individually by an AI image generator with no knowledge 
+    of other scenes or character names. They must work independently while creating visually consistent results.
+
+    Example of a story:  
+    Anaya loves to play in the park. Today, the sun is shining, and she can't wait to see her animal friends. As Anaya enters the park, she sees Benny the bunny hopping towards her. 'Hello, Benny!' she calls out.
+    Benny the bunny hops over. 'Let's go to the swings!' Anaya says. Benny nods excitedly.Anaya and Benny take turns swinging high in the air. They laugh and giggle as they soar through the sky.
+    Next, they head to the slide, where Fiona the fox is waiting. 'Hello, Fiona!' Anaya shouts.Anaya, Benny, and Fiona all slide down together. They laugh as they zoom down the slippery slide.
+    Suddenly, Timmy the turtle arrives, carrying a picnic basket. 'Let's have a picnic!' he suggests.They all sit down on the blanket and enjoy a delicious picnic together. They share sandwiches and fruit.
+    After the picnic, Anaya leads her friends to a magical fairy garden hidden behind the trees.In the fairy garden, they meet Luna the ladybug, who grants them a magical wish.
+    Anaya wishes for everyone to always be happy and play together forever. Luna grants the wish with a twinkle.As the sun sets, Anaya and her friends say goodbye and promise to play together again tomorrow.
 `;
 
     // Initialize Replicate for story generation
@@ -590,50 +242,6 @@ Suddenly, Timmy the turtle arrives, carrying a picnic basket. 'Let's have a picn
       } else {
         throw new Error("No valid JSON found in response");
       }
-      
-      // Create a new story document
-      // const newStory = await Story.create({
-      //   userId: user._id,
-      //   title: generatedContent.title,
-      //   storyType: storyType,
-      //   introduction: generatedContent.introduction,
-      //   conclusion: generatedContent.conclusion,
-      //   characters: generatedContent.characters.map(character => ({
-      //     name: character.name,
-      //     type: character.type,
-      //     description: character.description,
-      //     visualReference: character.visualReference
-      //   })),
-      //   scenes: generatedContent.scenes.map((scene, index) => ({
-      //     title: scene.title,
-      //     text: scene.text,
-      //     visualDescription: scene.visualDescription,
-      //     imageUrl: null,
-      //     order: index + 1
-      //   })),
-      //   storyStyleGuide: {
-      //     artStyle: generatedContent.storyStyleGuide?.artStyle,
-      //     colorPalette: generatedContent.storyStyleGuide?.colorPalette,
-      //     lighting: generatedContent.storyStyleGuide?.lighting,
-      //     cameraAngle: generatedContent.storyStyleGuide?.cameraAngle
-      //   },
-      //   coverPage: {
-      //     visualDescription: generatedContent.coverPagescene?.visualDescription || null,
-      //     imageUrl: null // Empty imageUrl field that will be filled later
-      //   },
-      //   // Add end page with empty imageUrl
-      //   endPage: {
-      //     visualDescription: generatedContent.endPagescene?.visualDescription || null,
-      //     imageUrl: null // Empty imageUrl field that will be filled later
-      //   },
-      //   status: 'draft',
-      //   tokenTransaction: {
-      //     initialGenerationCost: STORY_GENERATION_COST,
-      //     initialSaveCost: 0, // Will be updated when story is saved
-      //     totalTokensCost: STORY_GENERATION_COST,
-      //     isInitialSave: true
-      //   }
-      // });
 
       // Create a new story document
       const newStory = await Story.create({
@@ -761,250 +369,6 @@ const getAllUserStories = asyncHandler(async (req, res) => {
   }
 });
 
-// const saveStory = asyncHandler(async (req, res) => {
-//   const { 
-//     story, 
-//     scenes, 
-//     coverPageImage, 
-//     endPageImage,
-//     storyId // Optional for updates
-//   } = req.body;
-  
-//   const STORY_SAVE_TOKEN_COST = 2;
-//   const userId = req.user._id;
-
-//   try {
-//     // Find the user
-//     const user = await User.findById(userId);
-    
-//     // Validate user exists
-//     if (!user) {
-//       throw new Apierror(404, "User not found");
-//     }
-
-//     // New Story Creation
-//     if (!storyId) {
-//       // Check tokens for initial save
-//       if (!user.hasEnoughTokens(STORY_SAVE_TOKEN_COST)) {
-//         throw new Apierror(403, "Insufficient tokens to save story");
-//       }
-
-//       // Consume tokens for save
-//       const tokenConsumed = await user.consumeTokens(
-//         STORY_SAVE_TOKEN_COST, 
-//         'story', 
-//         null, 
-//         'Initial story save'
-//       );
-
-//       if (!tokenConsumed) {
-//         throw new Apierror(500, "Failed to deduct tokens");
-//       }
-
-//       // Create new story
-//       const newStory = await Story.create({
-//         userId: user._id,
-//         title: story.title,
-//         storyType: story.storyType || 'custom',
-//         introduction: story.introduction,
-//         conclusion: story.conclusion,
-        
-//         // Characters
-//         characters: story.characters ? story.characters.map(character => ({
-//           name: character.name,
-//           type: character.type || 'other',
-//           age: character.age,
-//           gender: character.gender,
-//           appearance: character.appearance,
-//           personality: character.personality,
-//           visualReference: {
-//             exactAppearance: character.visualReference?.exactAppearance
-//           }
-//         })) : [],
-
-//         // Scenes
-//         scenes: scenes.map((scene, index) => ({
-//           title: scene.title,
-//           text: scene.text,
-//           imageUrl: scene.image,
-//           visualDescription: scene.visualDescription,
-//           order: index + 1,
-//           generationMetadata: {
-//             generatedAt: new Date()
-//           }
-//         })),
-
-//         // Cover Page
-//         coverPage: coverPageImage ? {
-//           imageUrl: coverPageImage,
-//           visualDescription: story.coverPageVisualDescription
-//         } : null,
-
-//         // End Page
-//         endPage: endPageImage ? {
-//           imageUrl: endPageImage,
-//           visualDescription: story.endPageVisualDescription
-//         } : null,
-
-//         // Style Guide
-//         storyStyleGuide: story.storyStyleGuide ? {
-//           artStyle: story.storyStyleGuide.artStyle,
-//           colorPalette: story.storyStyleGuide.colorPalette,
-//           lighting: story.storyStyleGuide.lighting,
-//           cameraAngle: story.storyStyleGuide.cameraAngle
-//         } : null,
-
-//         tokenTransaction: {
-//           initialSaveCost: STORY_SAVE_TOKEN_COST,
-//           totalTokensCost: STORY_SAVE_TOKEN_COST,
-//           isInitialSave: true
-//         },
-
-//         status: 'draft'
-//       });
-
-//       return res.status(201).json(
-//         new Apiresponse(
-//           201, 
-//           {
-//             story: {
-//               _id: newStory._id,
-//               title: newStory.title,
-//               status: newStory.status
-//             },
-//             remainingTokens: user.tokens.balance
-//           }, 
-//           "Story saved successfully"
-//         )
-//       );
-//     }
-
-//     // Existing Story Update
-//     const existingStory = await Story.findById(storyId);
-    
-//     if (!existingStory) {
-//       throw new Apierror(404, "Story not found");
-//     }
-
-//     // Verify user ownership
-//     if (!existingStory.userId.equals(userId)) {
-//       throw new Apierror(403, "You do not have permission to modify this story");
-//     }
-
-//     // Check if this is the first update after initial save
-//     if (existingStory.tokenTransaction.isInitialSave) {
-//       // Check tokens for save
-//       if (!user.hasEnoughTokens(STORY_SAVE_TOKEN_COST)) {
-//         throw new Apierror(403, "Insufficient tokens to save story");
-//       }
-
-//       // Consume tokens for save
-//       const tokenConsumed = await user.consumeTokens(
-//         STORY_SAVE_TOKEN_COST, 
-//         'story', 
-//         existingStory._id, 
-//         'First story update'
-//       );
-
-//       if (!tokenConsumed) {
-//         throw new Apierror(500, "Failed to deduct tokens");
-//       }
-
-//       // Update token transaction
-//       existingStory.tokenTransaction.initialSaveCost += STORY_SAVE_TOKEN_COST;
-//       existingStory.tokenTransaction.totalTokensCost += STORY_SAVE_TOKEN_COST;
-//       existingStory.tokenTransaction.isInitialSave = false;
-//     }
-
-//     // Update story details
-//     existingStory.set({
-//       title: story.title,
-//       introduction: story.introduction,
-//       conclusion: story.conclusion,
-      
-//       // Characters
-//       characters: story.characters ? story.characters.map(character => ({
-//         name: character.name,
-//         type: character.type || 'other',
-//         age: character.age,
-//         gender: character.gender,
-//         appearance: character.appearance,
-//         personality: character.personality,
-//         visualReference: {
-//           exactAppearance: character.visualReference?.exactAppearance
-//         }
-//       })) : [],
-
-//       // Scenes
-//       scenes: scenes.map((scene, index) => ({
-//         title: scene.title,
-//         text: scene.text,
-//         imageUrl: scene.image,
-//         visualDescription: scene.visualDescription,
-//         order: index + 1,
-//         generationMetadata: {
-//           generatedAt: new Date()
-//         }
-//       })),
-
-//       // Cover Page
-//       coverPage: coverPageImage ? {
-//         imageUrl: coverPageImage,
-//         visualDescription: story.coverPageVisualDescription
-//       } : existingStory.coverPage,
-
-//       // End Page
-//       endPage: endPageImage ? {
-//         imageUrl: endPageImage,
-//         visualDescription: story.endPageVisualDescription
-//       } : existingStory.endPage,
-
-//       // Style Guide
-//       storyStyleGuide: story.storyStyleGuide ? {
-//         artStyle: story.storyStyleGuide.artStyle,
-//         colorPalette: story.storyStyleGuide.colorPalette,
-//         lighting: story.storyStyleGuide.lighting,
-//         cameraAngle: story.storyStyleGuide.cameraAngle
-//       } : existingStory.storyStyleGuide
-//     });
-
-//     // Save the updated story
-//     await existingStory.save();
-
-//     return res.status(200).json(
-//       new Apiresponse(
-//         200, 
-//         {
-//           story: {
-//             _id: existingStory._id,
-//             title: existingStory.title,
-//             status: existingStory.status
-//           },
-//           remainingTokens: user.tokens.balance
-//         }, 
-//         "Story updated successfully"
-//       )
-//     );
-
-//   } catch (error) {
-//     console.error("Story save/update error:", error);
-
-//     // Handle potential token refund if save fails
-//     try {
-//       const user = await User.findById(userId);
-//       if (user) {
-//         await user.addTokens(
-//           STORY_SAVE_TOKEN_COST, 
-//           'Story saving failed'
-//         );
-//       }
-//     } catch (refundError) {
-//       console.error("Failed to refund tokens:", refundError);
-//     }
-
-//     throw new Apierror(500, error.message || "Error processing story");
-//   }
-// });
 const saveStory = asyncHandler(async (req, res) => {
   const { 
     story, 

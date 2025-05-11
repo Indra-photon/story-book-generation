@@ -106,16 +106,13 @@ const StoryGenerator = ({ includeChild, childCharacter, storyType, onStoryGenera
           throw new Error("Failed to generate story");
         }
       } catch (err) {
-        console.error('Error generating story:', err);
-        
-        // Handle specific error cases
-        if (err.response?.data?.message?.includes('Insufficient tokens')) {
-          setError('You don\'t have enough tokens to generate a story. Please purchase more tokens.');
-          setShowTokenWarning(true);
-        } else {
-          setError('Failed to generate story. Please try again.');
-        }
-        
+        setError(err.response.data.message)
+        // if (err.response?.data?.message?.includes('Insufficient tokens')) {
+        //   setError('You don\'t have enough tokens to generate a story. Please purchase more tokens.');
+        //   setShowTokenWarning(true);
+        // } else {
+        //   setError('Failed to generate story. Please try again.');
+        // }
         setLoading(false);
       }
     };

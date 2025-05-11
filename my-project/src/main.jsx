@@ -16,6 +16,9 @@ import CharacterCreation from './components/CharacterCreation.jsx'
 import StoryCreation from './components/StoryCreation.jsx'
 import VerifyEmail from './pages/VerifyEmail.jsx'
 import StoryEditor from './components/StoryEditor.jsx'
+import SubscriptionPayment from './pages/SubscriptionPayment.jsx';
+import PaymentConfirmation from './pages/PaymentConfirmation.jsx'
+
 
 
 
@@ -57,6 +60,22 @@ const router = createBrowserRouter([
         element: (
           <AuthLayout authentication={true}>
               <StoryCreation />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/subscription-payment",
+        element: (
+          <AuthLayout authentication={false}>
+              <SubscriptionPayment />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/payment-confirmation",
+        element: (
+          <AuthLayout authentication={true}>
+              <PaymentConfirmation />
           </AuthLayout>
         ),
       },

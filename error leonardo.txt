@@ -1,30 +1,134 @@
-🚀 In this video, you’ll learn how to build a powerful Weather Agent using LangChain and OpenAI with custom tool calling capabilities!
-Whether you're building a smart assistant, integrating APIs with LLMs, or just getting started with LangChain — this hands-on tutorial will guide you step-by-step.
+Great question! In a typical React application, the error handler isn't automatically applied everywhere. Let me show you how to integrate the error handler across different parts of your application:
 
-🧠 What You'll Learn:
+Axios Interceptors (Global Error Handling):
+Create a new file src/utils/axiosConfig.js:
+src/utils/axiosConfig.jsCode import axios from 'axios';
+import { handleApiError } from './errorHandler';
 
-How to create a weather-fetching agent using LangChain
-Setting up custom tools and integrating APIs (like OpenWeatherMap)
-How OpenAI’s function calling works
-Making LLMs smarter using tool calling (function calling) features
-Real-time use case of LLM x External Data
+// Create an axios instance with default config
+const axiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_BACKEND_DOMAIN,
+  withCredentials: true,
+  headers: {
+  
+Utility Function for API Calls:
+You can use the safeApiCall function from errorHandler.js in various components:
 
-✅ By the end of the video, you'll have a working AI agent that can respond to weather queries by calling an external API — intelligently and efficiently.
+Example in a Profile component:
+javascriptimport { safeApiCall } from '../utils/errorHandler';
+import axiosInstance from '../utils/axiosConfig';
 
-Blog: https://codecrafts-indranil.hashnode.dev/how-to-build-a-simple-math-assistant-using-langchains-tool-calling-and-openai
-My Profile: 
-Twitter : https://x.com/Nil_phy_dreamer
-LinkedIn :   / indranil-maiti-7542941b7  
-Portfolio : https://my-portfolio-indranil-maitis-...
+const fetchUserStories = async () => {
+  setLoadingStories(true);
+  try {
+    const response = await safeApiCall(async () => {
+      const res = await axiosInstance.get('/api/v1/stories/get-all-stories');
+      return res.data;
+    });
+    setStoryHistory(response.data);
+  } catch (error) {
+    // Additional component-specific error handling if needed
+  } finally {
+    setLoadingStories(false);
+  }
+};
 
-🔗 Helpful Links:
+Custom Error Handling:
+You can also provide custom error handlers:
 
-LangChain Documentation: https://docs.langchain.com
+javascriptconst fetchData = async () => {
+  try {
+    const response = await safeApiCall(
+      async () => axiosInstance.get('/some-endpoint'),
+      // Optional custom error handler
+      async (error) => {
+        if (error.response?.status === 404) {
+          // Custom handling for not found
+          toast.error('Specific resource not found');
+          return true; // Indicates the error was handled
+        }
+        return false; // Let default handler take over
+      }
+    );
+  } catch (error) {
+    // Fallback error handling
+  }
+};
 
-OpenAI API: https://platform.openai.com
+Update App.jsx to Use Axios Instance:
+Modify the initial user fetch:
+UntitledText import { refreshTokens } from './utils/auth'
+import axiosInstance from './utils/axiosConfig'
 
-#LangChain #OpenAI #FunctionCalling #WeatherAgent #AIAgent #LangChainTutorial #PythonAI #OpenAIAPI #LLMTools #ToolCalling #WeatherBot #LangChainProjects #OpenWeatherMap #AIintegration #CustomToolCalling
+function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+          const userResponse = await a
+Update Existing Components:
+Replace direct axios calls with axiosInstance and safeApiCall. Here's an example for the Login component:
+UntitledText import { safeApiCall } from '../utils/errorHandler';
+import axiosInstance from '../utils/axiosConfig';
+
+const LoginResponse = async ({email, password}) => {
+    try {
+      const loginResponse = await safeApiCall(async () => 
+        await axiosInsta
+Main Entry Point Update:
+Update main.jsx to use the axios configuration:
+UntitledText import React,{ StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+impoSummary of Error Handler Usage
+
+Global Axios Interceptors:
+
+Automatically handle errors for all axios requests
+Provides consistent error handling across the application
+
+
+Utility Function safeApiCall:
+
+Wrap individual API calls with additional error handling
+Allows custom error handling when needed
+Provides a consistent way to manage API errors
+
+
+Flexible Error Handling:
+
+Global handler for common scenarios
+Option to provide custom error handling for specific cases
+Centralized error management
 
 
 
-Build a Weather Agent with LangChain + OpenAI | Custom Tool Calling Tutorial | #chatgpt #langchain 
+When to Use Each Method
+
+Axios Interceptors:
+
+Default error handling
+No need to manually add error handling to each request
+Best for common error scenarios
+
+
+safeApiCall:
+
+When you need more specific error handling
+Want to add component-specific error logic
+Need to intercept or modify error behavior
+
+
+
+Best Practices
+
+Always use axiosInstance instead of direct axios
+Wrap API calls with safeApiCall when possible
+Add custom error handlers for complex scenarios
+Log errors for debugging
+Provide user-friendly error messages
+
+Would you like me to demonstrate how to implement this in a specific component or explain any part of the error handling in more detail?

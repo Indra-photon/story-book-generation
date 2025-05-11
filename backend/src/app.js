@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 import dotenv from "dotenv";
 import rateLimit from 'express-rate-limit';
 
+
 const app = express()
 dotenv.config()
 
@@ -56,8 +57,9 @@ import userRouter from "./routes/user.routes.js"
 import { errorHandler } from './middlewares/error.middlewares.js'
 import characterRouter from "./routes/character.routes.js"
 import storyRouter from "./routes/story.routes.js"
+import paymentRouter from "./routes/payment.routes.js"
 
-// Apply specific rate limiters
+
 // app.use("/api/v1/users/login", authLimiter);
 // app.use("/api/v1/stories/generate-prompt", storyGenerationLimiter);
 
@@ -66,6 +68,7 @@ app.use("/api/v1/healthcheck", healthcheckRouter)
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/character", characterRouter)
 app.use("/api/v1/stories", storyRouter)
+app.use("/api/v1/payments", paymentRouter)
 
 app.use(errorHandler)
 
