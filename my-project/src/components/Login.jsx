@@ -15,8 +15,40 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // const LoginResponse = async ({email, password}) => {
+  //   // const loadingToast = toast.loading("Logging into your account...");
+  //   try {
+  //     const loginResponse = await axios.post(
+  //         `${import.meta.env.VITE_BACKEND_DOMAIN }/api/v1/users/login`,
+  //         { email, password },
+  //         { withCredentials: true }
+  //     );
+
+  //     if (loginResponse.data.data) {
+  //         const userResponse = await axios.get(
+  //             `${import.meta.env.VITE_BACKEND_DOMAIN }/api/v1/users/me`,
+  //             { 
+  //               withCredentials: true,
+  //             }
+  //         );
+          
+  //         if (userResponse.data.data) {
+  //             // toast.success('Welcome back!');
+  //             dispatch(login(userResponse.data.data));
+  //             navigate("/")
+  //         }
+  //     }
+  //       } catch (error) {
+  //           console.log(error);
+  //           const errorMessage = error.response?.data?.message || 'Login failed';
+  //           toast.error(errorMessage);
+  //           // dispatch(logout());
+  //       } finally {
+  //           setLoading(false);
+  //       }
+  // }
+
   const LoginResponse = async ({email, password}) => {
-    // const loadingToast = toast.loading("Logging into your account...");
     try {
       const loginResponse = await axios.post(
           `${import.meta.env.VITE_BACKEND_DOMAIN }/api/v1/users/login`,
@@ -24,7 +56,7 @@ const Login = () => {
           { withCredentials: true }
       );
 
-      if (loginResponse.data.data) {
+      if (loginResponse.data.success) {
           const userResponse = await axios.get(
               `${import.meta.env.VITE_BACKEND_DOMAIN }/api/v1/users/me`,
               { 
@@ -32,21 +64,21 @@ const Login = () => {
               }
           );
           
-          if (userResponse.data.data) {
-              // toast.success('Welcome back!');
+          if (userResponse.data.success) {
               dispatch(login(userResponse.data.data));
-              navigate("/")
+              toast.success('Welcome back!');
+              navigate("/profile");
           }
       }
-        } catch (error) {
-            console.log(error);
-            const errorMessage = error.response?.data?.message || 'Login failed';
-            toast.error(errorMessage);
-            // dispatch(logout());
-        } finally {
-            setLoading(false);
-        }
-  }
+    } catch (error) {
+        console.error(error);
+        const errorMessage = error.response?.data?.message || 'Login failed';
+        toast.error(errorMessage);
+        dispatch(logout());
+    } finally {
+        setLoading(false);
+    }
+}
 
 
 
