@@ -52,8 +52,8 @@ const SubscriptionPayment = () => {
         'basic': { // Changed from 'pro' to 'basic' to match backend expectations
           id: 'basic', 
           name: 'Basic', 
-          price: 2500,
-          monthlyPrice: 2500,
+          price: 300,
+          monthlyPrice: 300,
           tokenAmount: 40,
           maxTokens: 50,
           color: 'primary',
@@ -69,8 +69,8 @@ const SubscriptionPayment = () => {
         'premium': { // Changed from 'business' to 'premium' to match backend expectations
           id: 'premium',
           name: 'Premium', 
-          price: 4000,
-          monthlyPrice: 4000,
+          price: 800,
+          monthlyPrice: 800,
           tokenAmount: 80,
           maxTokens: 100,
           color: 'accent',

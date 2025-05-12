@@ -1,228 +1,590 @@
-// FeaturesShowcase.jsx - Modified for Storybook Features
-import React from 'react';
+
+// import React from 'react';
+// import { motion } from 'framer-motion';
+// import { Sparkles, Palette, PenTool, Wand2, Edit, Download } from 'lucide-react';
+// import pic1 from '../../public/showcase4.jpg';
+// import { Link } from 'react-router-dom';
+
+// const FeaturesShowcase = () => {
+//   // Feature data - only title and description
+//   const features = [
+//     {
+//       icon: <Sparkles className="w-8 h-8 text-primary-500" />,
+//       title: "Personalized Stories",
+//       description: "Include your child's name, appearance, and preferences to make them the hero of their own adventure.",
+//       color: "primary"
+//     },
+//     {
+//       icon: <Palette className="w-8 h-8 text-secondary-500" />,
+//       title: "Vibrant Illustrations",
+//       description: "Every page features stunning, colorful illustrations that bring the story to life and capture your child's imagination.",
+//       color: "secondary"
+//     },
+//     {
+//       icon: <PenTool className="w-8 h-8 text-accent" />,
+//       title: "Simple Story Creation",
+//       description: "Our intuitive interface makes crafting beautiful storybooks easy - no writing or design skills needed.",
+//       color: "accent"
+//     },
+//     {
+//       icon: <Wand2 className="w-8 h-8 text-accent2" />,
+//       title: "Themed Storybooks",
+//       description: "Choose from a variety of exciting themes like space adventures, underwater journeys, fairy tales, and more.",
+//       color: "accent2"
+//     },
+//     {
+//       icon: <Edit className="w-8 h-8 text-primary-500" />,
+//       title: "Easy Editing & Saving",
+//       description: "Make changes anytime, save multiple versions, and revisit your creations whenever you want.",
+//       color: "primary"
+//     },
+//     {
+//       icon: <Download className="w-8 h-8 text-secondary-500" />,
+//       title: "Multiple Formats",
+//       description: "Download your storybooks as digital PDFs or order professional printed copies delivered to your door.",
+//       color: "secondary"
+//     }
+//   ];
+
+//   // Animation variants for container
+//   const containerVariants = {
+//     hidden: {},
+//     visible: {
+//       transition: {
+//         staggerChildren: 0.15, // Delay between each card
+//       },
+//     },
+//   };
+
+//   // Animation variants for cards
+//   const cardVariants = {
+//     hidden: {
+//       opacity: 0,
+//       scale: 0,
+//       rotate: -180,
+//     },
+//     visible: {
+//       opacity: 1,
+//       scale: 1,
+//       rotate: 0,
+//       transition: {
+//         type: "spring",
+//         stiffness: 200,
+//         damping: 20,
+//         duration: 0.6,
+//       },
+//     },
+//     hover: {
+//       scale: 1.05,
+//       rotate: [0, -5, 5, 0],
+//       transition: {
+//         rotate: {
+//           duration: 0.5,
+//           ease: "easeInOut",
+//         },
+//         scale: {
+//           duration: 0.2,
+//         },
+//       },
+//     },
+//   };
+
+//   // Animation variants for icon pop
+//   const iconVariants = {
+//     hidden: {
+//       scale: 0,
+//     },
+//     visible: {
+//       scale: 1,
+//       transition: {
+//         type: "spring",
+//         stiffness: 500,
+//         damping: 15,
+//         delay: 0.3,
+//       },
+//     },
+//     bounce: {
+//       scale: [1, 1.2, 0.9, 1.1, 1],
+//       transition: {
+//         duration: 0.6,
+//         ease: "easeInOut",
+//       },
+//     },
+//   };
+
+//   return (
+//     <section className="py-20 bg-gradient-primary overflow-hidden relative">
+//       {/* Decorative background elements */}
+//       <motion.div 
+//         initial={{ opacity: 0, scale: 0 }}
+//         animate={{ opacity: 1, scale: 1 }}
+//         transition={{ duration: 1 }}
+//         className="absolute top-0 left-0 w-64 h-64 rounded-full bg-primary-300/20 -translate-x-1/2 -translate-y-1/2"
+//       />
+//       <motion.div 
+//         initial={{ opacity: 0, scale: 0 }}
+//         animate={{ opacity: 1, scale: 1 }}
+//         transition={{ duration: 1, delay: 0.2 }}
+//         className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-secondary-300/20 translate-x-1/3 translate-y-1/3"
+//       />
+//       <motion.div 
+//         initial={{ opacity: 0, scale: 0 }}
+//         animate={{ opacity: 1, scale: 1 }}
+//         transition={{ duration: 1, delay: 0.4 }}
+//         className="absolute top-1/2 right-20 w-20 h-20 rounded-full bg-accent/20"
+//       />
+//       <motion.div 
+//         initial={{ opacity: 0, scale: 0 }}
+//         animate={{ opacity: 1, scale: 1 }}
+//         transition={{ duration: 1, delay: 0.6 }}
+//         className="absolute bottom-1/4 left-20 w-16 h-16 rounded-full bg-accent2/20"
+//       />
+      
+//       <div className="container mx-auto px-4 relative z-10">
+//         {/* Section header */}
+//         <motion.div 
+//           initial={{ opacity: 0, y: -50 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.6 }}
+//           className="text-center mb-16"
+//         >
+//           <motion.div 
+//             initial={{ scale: 0, rotate: -180 }}
+//             animate={{ scale: 1, rotate: 0 }}
+//             transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.3 }}
+//             className="inline-block bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full text-lg font-bold mb-6 border-2 border-primary-100"
+//           >
+//             <Sparkles size={16} className="inline-block mr-2 text-primary-500" />
+//             Magical Storybook Features
+//           </motion.div>
+          
+//           <motion.h2 
+//             initial={{ opacity: 0, scale: 0.5 }}
+//             animate={{ opacity: 1, scale: 1 }}
+//             transition={{ duration: 0.6, delay: 0.5 }}
+//             className="text-4xl md:text-5xl font-chewy text-dark mb-4 drop-shadow-[2px_2px_0px_rgba(61,29,140,0.3)]"
+//           >
+//             Create Enchanting Stories With Ease
+//           </motion.h2>
+          
+//           <motion.p 
+//             initial={{ opacity: 0, y: 20 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.6, delay: 0.7 }}
+//             className="text-xl max-w-3xl mx-auto text-gray-600"
+//           >
+//             Our platform makes it simple to create personalized, vibrant storybooks that will delight your child and become treasured keepsakes.
+//           </motion.p>
+//         </motion.div>
+        
+//         {/* Features grid */}
+//         <motion.div 
+//           variants={containerVariants}
+//           initial="hidden"
+//           animate="visible"
+//           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+//         >
+//           {features.map((feature, index) => (
+//             <motion.div 
+//               key={index}
+//               variants={cardVariants}
+//               whileHover="hover"
+//               className="bg-white rounded-2xl shadow-lg p-6"
+//             >
+//               <motion.div 
+//                 variants={iconVariants}
+//                 initial="hidden"
+//                 animate="visible"
+//                 whileHover="bounce"
+//                 className={`w-16 h-16 rounded-2xl bg-${feature.color}-100 flex items-center justify-center mb-6`}
+//               >
+//                 {feature.icon}
+//               </motion.div>
+              
+//               <motion.h3 
+//                 initial={{ opacity: 0, x: -20 }}
+//                 animate={{ opacity: 1, x: 0 }}
+//                 transition={{ delay: 0.4 + index * 0.1 }}
+//                 className="text-2xl font-chewy text-dark mb-3"
+//               >
+//                 {feature.title}
+//               </motion.h3>
+              
+//               <motion.p 
+//                 initial={{ opacity: 0, y: 20 }}
+//                 animate={{ opacity: 1, y: 0 }}
+//                 transition={{ delay: 0.5 + index * 0.1 }}
+//                 className="text-gray-600"
+//               >
+//                 {feature.description}
+//               </motion.p>
+//             </motion.div>
+//           ))}
+//         </motion.div>
+        
+       
+        
+//         {/* CTA */}
+//         <motion.div 
+//           initial={{ opacity: 0, y: 30 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.6, delay: 2 }}
+//           className="text-center"
+//         >
+//           <h3 className="text-2xl md:text-3xl font-chewy text-dark mb-6">Ready to Create a Magical Storybook?</h3>
+//           <Link to='/signup'>
+//             <motion.button 
+//               whileHover={{ scale: 1.05, rotate: [-1, 1, -1, 0] }}
+//               whileTap={{ scale: 0.95 }}
+//               className="px-8 py-4 bg-accent text-dark font-chewy text-xl rounded-full shadow-button transform transition duration-200"
+//             >
+//               Start Creating Now
+//             </motion.button>
+//           </Link>
+//           <p className="mt-4 text-white">No design skills needed — just bring your imagination!</p>
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default FeaturesShowcase;
+
+// FeaturesShowcase.jsx - Modified with advanced Framer Motion animations
+import React, { useRef, useEffect } from 'react';
+import { motion, useInView, useAnimation } from 'framer-motion';
 import { Sparkles, Palette, PenTool, Wand2, Edit, Download } from 'lucide-react';
-import pic1 from '../../public/showcase4.jpg'
 import { Link } from 'react-router-dom';
 
 const FeaturesShowcase = () => {
-  // Feature data with icons and details
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
+
+  // Feature data - only title and description
   const features = [
     {
       icon: <Sparkles className="w-8 h-8 text-primary-500" />,
       title: "Personalized Stories",
       description: "Include your child's name, appearance, and preferences to make them the hero of their own adventure.",
-      benefits: [
-        "Multiple story themes to choose from",
-        "Custom character traits and preferences",
-        "Age-appropriate narratives and adventures"
-      ],
       color: "primary"
     },
     {
       icon: <Palette className="w-8 h-8 text-secondary-500" />,
       title: "Vibrant Illustrations",
       description: "Every page features stunning, colorful illustrations that bring the story to life and capture your child's imagination.",
-      benefits: [
-        "Bright, engaging color palettes",
-        "Characters based on your child's appearance",
-        "Dynamic scenes that enhance the storytelling"
-      ],
       color: "secondary"
     },
     {
       icon: <PenTool className="w-8 h-8 text-accent" />,
       title: "Simple Story Creation",
       description: "Our intuitive interface makes crafting beautiful storybooks easy - no writing or design skills needed.",
-      benefits: [
-        "AI-powered story generation",
-        "Pre-written templates to customize",
-        "Simple drag-and-drop interface"
-      ],
       color: "accent"
     },
     {
       icon: <Wand2 className="w-8 h-8 text-accent2" />,
       title: "Themed Storybooks",
       description: "Choose from a variety of exciting themes like space adventures, underwater journeys, fairy tales, and more.",
-      benefits: [
-        "Educational themes with learning opportunities",
-        "Seasonal and holiday special themes",
-        "Fantasy and adventure narratives"
-      ],
       color: "accent2"
     },
     {
       icon: <Edit className="w-8 h-8 text-primary-500" />,
       title: "Easy Editing & Saving",
       description: "Make changes anytime, save multiple versions, and revisit your creations whenever you want.",
-      benefits: [
-        "Cloud storage for all your storybooks",
-        "Real-time preview as you edit",
-        "Share drafts with family before finalizing"
-      ],
       color: "primary"
     },
     {
       icon: <Download className="w-8 h-8 text-secondary-500" />,
       title: "Multiple Formats",
       description: "Download your storybooks as digital PDFs or order professional printed copies delivered to your door.",
-      benefits: [
-        "High-quality print options",
-        "Digital versions for tablets and e-readers",
-        "Gift packaging available for printed books"
-      ],
       color: "secondary"
     }
   ];
 
+  // Calculate positions for cards coming from center
+  const getCardPosition = (index) => {
+    const row = Math.floor(index / 3);
+    const col = index % 3;
+    
+    // Calculate distance from center (viewport center)
+    const centerX = 0;
+    const centerY = 0;
+    
+    // Card positions relative to center
+    const xPositions = [-1, 0, 1]; // left, center, right
+    const yPositions = [-1, 1]; // top, bottom
+    
+    const targetX = xPositions[col] * 400; // 400px spacing
+    const targetY = yPositions[row] * 300; // 300px spacing
+    
+    return {
+      x: centerX - targetX,
+      y: centerY - targetY,
+    };
+  };
+
+  // Enhanced animation variants for container
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  // Enhanced animation variants for cards with center origin
+  const cardVariants = (index) => ({
+    hidden: {
+      opacity: 0,
+      scale: 0,
+      x: getCardPosition(index).x,
+      y: getCardPosition(index).y,
+      rotate: Math.random() * 360 - 180,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      x: 0,
+      y: 0,
+      rotate: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        duration: 0.8,
+        delay: index * 0.1,
+      },
+    },
+    hover: {
+      scale: 1.05,
+      rotate: [0, -5, 5, 0],
+      boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+      transition: {
+        rotate: {
+          duration: 0.5,
+          ease: "easeInOut",
+        },
+        scale: {
+          duration: 0.2,
+        },
+      },
+    },
+  });
+
+  // Enhanced icon animation
+  const iconVariants = {
+    hidden: {
+      scale: 0,
+      rotate: -180,
+    },
+    visible: {
+      scale: 1,
+      rotate: 0,
+      transition: {
+        type: "spring",
+        stiffness: 500,
+        damping: 15,
+        delay: 0.5,
+      },
+    },
+    bounce: {
+      scale: [1, 1.3, 0.8, 1.1, 1],
+      rotate: [0, 10, -10, 5, 0],
+      transition: {
+        duration: 0.6,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  // Particle effect for background
+  const particleVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: (i) => ({
+      opacity: [0, 1, 1, 0],
+      scale: [0, 1, 1, 0],
+      transition: {
+        duration: 2,
+        delay: i * 0.2,
+        repeat: Infinity,
+        repeatDelay: 3,
+      },
+    }),
+  };
+
   return (
-    <section className="py-20 bg-gradient-primary overflow-hidden relative">
+    <section className="py-20 bg-gradient-primary overflow-hidden relative" ref={ref}>
+      {/* Animated particles */}
+      {[...Array(5)].map((_, i) => (
+        <motion.div
+          key={i}
+          custom={i}
+          variants={particleVariants}
+          initial="hidden"
+          animate="visible"
+          className={`absolute w-4 h-4 rounded-full ${
+            i % 2 === 0 ? 'bg-primary-300' : 'bg-secondary-300'
+          }`}
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+        />
+      ))}
+
       {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-primary-300/20 -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-secondary-300/20 translate-x-1/3 translate-y-1/3"></div>
-      <div className="absolute top-1/2 right-20 w-20 h-20 rounded-full bg-accent/20"></div>
-      <div className="absolute bottom-1/4 left-20 w-16 h-16 rounded-full bg-accent2/20"></div>
+      <motion.div 
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1 }}
+        className="absolute top-0 left-0 w-64 h-64 rounded-full bg-primary-300/20 -translate-x-1/2 -translate-y-1/2"
+      />
+      <motion.div 
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-secondary-300/20 translate-x-1/3 translate-y-1/3"
+      />
+      <motion.div 
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.4 }}
+        className="absolute top-1/2 right-20 w-20 h-20 rounded-full bg-accent/20"
+      />
+      <motion.div 
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.6 }}
+        className="absolute bottom-1/4 left-20 w-16 h-16 rounded-full bg-accent2/20"
+      />
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="inline-block bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full text-lg font-bold mb-6 border-2 border-primary-100">
+        <motion.div 
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <motion.div 
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.3 }}
+            className="inline-block bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full text-lg font-bold mb-6 border-2 border-primary-100"
+          >
             <Sparkles size={16} className="inline-block mr-2 text-primary-500" />
             Magical Storybook Features
-          </div>
+          </motion.div>
           
-          <h2 className="text-4xl md:text-5xl font-chewy text-dark mb-4 drop-shadow-[2px_2px_0px_rgba(61,29,140,0.3)]">
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="text-4xl md:text-5xl font-chewy text-dark mb-4 drop-shadow-[2px_2px_0px_rgba(61,29,140,0.3)]"
+          >
             Create Enchanting Stories With Ease
-          </h2>
+          </motion.h2>
           
-          <p className="text-xl max-w-3xl mx-auto text-gray-600">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="text-xl max-w-3xl mx-auto text-gray-600"
+          >
             Our platform makes it simple to create personalized, vibrant storybooks that will delight your child and become treasured keepsakes.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         
-        {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        {/* Features grid with center animation */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate={controls}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+        >
           {features.map((feature, index) => (
-            <div 
-              key={index} 
-              className="bg-white rounded-2xl shadow-lg p-6 transform transition-transform duration-300 hover:-translate-y-2"
+            <motion.div 
+              key={index}
+              custom={index}
+              variants={cardVariants(index)}
+              whileHover="hover"
+              className="bg-white rounded-2xl shadow-lg p-6 relative"
             >
-              <div className={`w-16 h-16 rounded-2xl bg-${feature.color}-100 flex items-center justify-center mb-6`}>
+              {/* Glow effect on hover */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-400/20 to-secondary-400/20 opacity-0"
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+              
+              <motion.div 
+                variants={iconVariants}
+                initial="hidden"
+                animate="visible"
+                whileHover="bounce"
+                className={`w-16 h-16 rounded-2xl bg-${feature.color}-100 flex items-center justify-center mb-6 relative z-10`}
+              >
                 {feature.icon}
-              </div>
+              </motion.div>
               
-              <h3 className="text-2xl font-chewy text-dark mb-3">{feature.title}</h3>
+              <motion.h3 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8 + index * 0.1 }}
+                className="text-2xl font-chewy text-dark mb-3 relative z-10"
+              >
+                {feature.title}
+              </motion.h3>
               
-              <p className="text-gray-600 mb-6">{feature.description}</p>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 + index * 0.1 }}
+                className="text-gray-600 relative z-10"
+              >
+                {feature.description}
+              </motion.p>
               
-              <ul className="space-y-3">
-                {feature.benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <div className="w-5 h-5 rounded-full bg-accent2 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-dark text-xs font-bold">✓</span>
-                    </div>
-                    <span className="ml-2 text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {/* Animated corner decoration */}
+              <motion.div
+                className="absolute top-0 right-0 w-8 h-8"
+                initial={{ scale: 0, rotate: 0 }}
+                animate={{ scale: 1, rotate: 45 }}
+                transition={{ delay: 1 + index * 0.1 }}
+              >
+                <div className={`w-full h-full bg-${feature.color}-200 rounded-sm`} />
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
-        
-        {/* Feature highlight - Visual showcase */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-primary-100 mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-3xl font-chewy text-dark mb-4">
-                Watch Your Stories Come To Life
-              </h3>
-              
-              <p className="text-gray-600 mb-6">
-                Our magical storybooks blend your child's photos with vibrant illustrations to create a truly personalized reading experience. Each page is designed to engage, delight, and inspire young readers.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold">1</div>
-                  <span className="text-gray-700">Upload your child's photo</span>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-secondary-500 flex items-center justify-center text-white font-bold">2</div>
-                  <span className="text-gray-700">Choose a story theme and personalize details</span>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-dark font-bold">3</div>
-                  <span className="text-gray-700">Preview and edit your storybook</span>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-accent2 flex items-center justify-center text-dark font-bold">4</div>
-                  <span className="text-gray-700">Download or order a printed copy</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="relative">
-              {/* Storybook preview with page flipping effect */}
-              <div className="relative mx-auto w-full max-w-sm">
-                {/* Book cover */}
-                <div className="bg-primary-500 rounded-lg shadow-lg p-4 transform rotate-3 relative z-20">
-                  <div className="bg-white rounded p-3">
-                    <div className="aspect-[3/4] bg-gradient-to-br from-accent to-secondary-400 rounded relative overflow-hidden">
-                      {/* Add cover image here as a background */}
-                      <img 
-                        src={pic1}// Replace with your actual cover image path
-                        alt="Space Adventure Cover"
-                        className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
-                      />
-                      
-                      {/* Semi-transparent overlay to ensure text remains readable */}
-                      <div className="absolute inset-0"></div>
-                      
-                      <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-                        <h4 className="text-2xl font-chewy text-white drop-shadow-[1px_1px_0px_rgba(0,0,0,0.3)] mb-2 z-10">
-                          Emma's Space Adventure
-                        </h4>
-                        <p className="text-white text-sm font-medium drop-shadow-md">A personalized adventure</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Peeking page 1 */}
-                <div className="absolute top-2 left-2 right-2 bg-white rounded-lg shadow-lg p-4 transform rotate-1 z-10">
-                  <div className="aspect-[3/4] bg-light rounded relative overflow-hidden">
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-                      <p className="text-xs text-gray-600 font-medium mb-2">Once upon a time...</p>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Peeking page 2 */}
-                <div className="absolute top-4 left-4 right-4 bg-white rounded-lg shadow-lg p-4 transform rotate-0 z-0">
-                  <div className="aspect-[3/4] bg-light rounded"></div>
-                </div>
-              </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-accent rounded-full opacity-20"></div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary-300 rounded-full opacity-30"></div>
-            </div>
-          </div>
-        </div>
+        </motion.div>
         
         {/* CTA */}
-        <div className="text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 2 }}
+          className="text-center"
+        >
           <h3 className="text-2xl md:text-3xl font-chewy text-dark mb-6">Ready to Create a Magical Storybook?</h3>
           <Link to='/signup'>
-            <button className="px-8 py-4 bg-accent text-dark font-chewy text-xl rounded-full shadow-button hover:-translate-y-1 transform transition duration-200">
+            <motion.button 
+              whileHover={{ scale: 1.05, rotate: [-1, 1, -1, 0] }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-accent text-dark font-chewy text-xl rounded-full shadow-button transform transition duration-200"
+            >
               Start Creating Now
-            </button>
+            </motion.button>
           </Link>
           <p className="mt-4 text-white">No design skills needed — just bring your imagination!</p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

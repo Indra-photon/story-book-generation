@@ -1,14 +1,16 @@
 
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Download, ChevronLeft, ChevronRight, Edit, Share, Printer, BookOpen, Book } from 'lucide-react';
 import html2canvas from 'html2canvas';
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast'
 import jsPDF from 'jspdf';
 
 const StoryCanvas = ({ story, scenes }) => {
   const [currentScene, setCurrentScene] = useState('cover'); // Start with cover page
   const [viewMode, setViewMode] = useState('reading'); // 'reading', 'editing', or 'fullscreen'
   const [editableText, setEditableText] = useState('');
+  const navigate = useNavigate();
   
   const pageRefs = useRef([]);
   
@@ -154,25 +156,6 @@ const StoryCanvas = ({ story, scenes }) => {
       // Add title page
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
-      
-      // // Create colorful cover page
-      // pdf.setFillColor(50, 50, 150); // Blue background for cover
-      // pdf.rect(0, 0, pageWidth, pageHeight, 'F');
-      
-      // pdf.setFontSize(36);
-      // pdf.setTextColor(255, 255, 255); // White text
-      // pdf.setFont("times", "bold");
-      // const title = story?.title || "Your Storybook";
-      // pdf.text(title, pageWidth / 2, pageHeight / 2 - 10, { align: 'center' });
-      
-      // // Add subtitle if available
-      // if (story?.introduction) {
-      //   pdf.setFontSize(16);
-      //   pdf.setTextColor(240, 240, 240); // Light gray
-      //   pdf.setFont("times", "italic");
-      //   const introLines = pdf.splitTextToSize(story.introduction, pageWidth - 40);
-      //   pdf.text(introLines, pageWidth / 2, pageHeight / 2 + 10, { align: 'center' });
-      // }
 
       // Add cover page with image if available
       if (story.coverPageImage) {
@@ -1053,6 +1036,14 @@ const StoryCanvas = ({ story, scenes }) => {
           >
             <Download size={16} className="mr-2" />
             Download
+          </button>
+
+          <button
+            onClick={() => navigate(`/edit-story/${story._id}`)}
+            className="flex items-center px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition"
+          >
+            <Edit size={16} className="mr-2" />
+            Edit Story
           </button>
           
           <button

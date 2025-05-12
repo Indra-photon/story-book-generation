@@ -345,7 +345,7 @@ const Navbar = () => {
             <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center text-black font-bold">
               S
             </div>
-            <span className="text-2xl font-chewy text-black">StoryMorph</span>
+            <span className="text-2xl font-chewy text-black">StoryTeller</span>
           </Link>
           
           {/* Desktop Navigation */}

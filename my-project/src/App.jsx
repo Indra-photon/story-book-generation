@@ -18,67 +18,6 @@ import { refreshTokens } from './utils/auth.js'
 import TokenPurchase from './pages/TokenPurchase.jsx';
 import PaymentSuccess from './pages/PaymentConfirmation.jsx';
 
-
-// function App() {
-//   const dispatch = useDispatch()
-//   useEffect(() => {
-//     const fetchUser = async () => {
-//       try {
-//           const userResponse = await axios.get(`${import.meta.env.VITE_BACKEND_DOMAIN }/api/v1/users/me`,{}, {
-//               withCredentials: true,
-//           });
-//           if (userResponse) {
-//             dispatch(login(userResponse.data.data));
-//           }
-//       } catch (error) {
-//         dispatch(logout());
-//       }
-//     };
-  
-//     fetchUser();
-
-//     // Set up periodic token refresh (45 minutes)
-//     const refreshInterval = setInterval(() => {
-//       refreshTokens();
-//     }, 45 * 60 * 1000);
-    
-//     // Cleanup interval on component unmount
-//     return () => clearInterval(refreshInterval);
-//   }, []);
-
-//   return (
-//     <>
-//       <Navbar />
-//       <main>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/login" element={<Login />} />
-//         <Route path='/signup' element={<Signup />} />
-//         <Route path='/profile' element={<Profile />} />
-//         <Route path='/work-area' element={<Dashboard />} />
-//         <Route path='/path-selection' element={<PathwaySelection />} />
-//         <Route path='/story-creation' element={<StoryCreation />} />
-//         <Route path='/character-creation' element={<CharacterCreation />} />
-//         <Route path="/verify-email" element={<VerifyEmail />} />
-//         <Route path="/edit-story/:storyId" element={<StoryEditor />} />
-//         <Route path="/tokens" element={<TokenPurchase />} />
-//         <Route path="/payment/success" element={<PaymentSuccess />} />
-//       </Routes>
-//      </main>
-//     </>
-//   )
-// }
-
-// export default App
-
-// import Navbar from './components/Navbar'
-// import Home from './pages/Home'
-// import {Route, Routes, useNavigate} from 'react-router-dom'
-// import {login, logout} from "./store/authSlice.js"
-// import { useDispatch } from 'react-redux'
-// import { useEffect, useState } from 'react'
-// import axios from 'axios';
-
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()

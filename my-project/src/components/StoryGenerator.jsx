@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, RefreshCw, X, Edit, Save, FilePlus } from 'lucide-react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const StoryGenerator = ({ includeChild, childCharacter, storyType, onStoryGenerated }) => {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,7 @@ const StoryGenerator = ({ includeChild, childCharacter, storyType, onStoryGenera
   const [editableSceneText, setEditableSceneText] = useState('');
   const [saveCost, setSaveCost] = useState(2); // Default cost for first save
   const [showTokenWarning, setShowTokenWarning] = useState(false)
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -213,6 +215,8 @@ const StoryGenerator = ({ includeChild, childCharacter, storyType, onStoryGenera
   //     setLoading(false);
   //   }
   // };
+  
+  
   const handleRegenerateStory = async () => {
     // Show token cost confirmation
     if (!window.confirm("Regenerating will cost 5 tokens. Do you want to continue?")) {
@@ -315,30 +319,51 @@ const StoryGenerator = ({ includeChild, childCharacter, storyType, onStoryGenera
   };
 
 
-  const handleContinue = () => {
-    // Prevent continuation if story is not saved
-    if (!isStorySaved) {
-      setSaveError("Please save your story before continuing");
-      return;
-    }
+  // const handleContinue = () => {
+  //   // Prevent continuation if story is not saved
+  //   if (!isStorySaved) {
+  //     setSaveError("Please save your story before continuing");
+  //     return;
+  //   }
 
-    // Prevent continuation if there are unsaved changes
-    if (isStoryModified) {
-      setSaveError("You have unsaved changes. Please save your story before continuing.");
-      return;
-    }
+  //   // Prevent continuation if there are unsaved changes
+  //   if (isStoryModified) {
+  //     setSaveError("You have unsaved changes. Please save your story before continuing.");
+  //     return;
+  //   }
 
-    if (story && scenes.length > 0) {
-      const completeStory = {
-        ...story,
-        coverPageImage,
-        endPageImage,
-        storyId // Include the storyId for future updates
-      };
+  //   if (story && scenes.length > 0) {
+  //     const completeStory = {
+  //       ...story,
+  //       coverPageImage,
+  //       endPageImage,
+  //       storyId // Include the storyId for future updates
+  //     };
       
-      onStoryGenerated(completeStory, scenes);
-    }
-  };
+  //     onStoryGenerated(completeStory, scenes);
+  //   }
+  // };
+
+  const handleContinue = () => {
+  // Prevent continuation if story is not saved
+  if (!isStorySaved) {
+    setSaveError("Please save your story before continuing");
+    return;
+  }
+
+  // Prevent continuation if there are unsaved changes
+  if (isStoryModified) {
+    setSaveError("You have unsaved changes. Please save your story before continuing.");
+    return;
+  }
+
+  if (story && scenes.length > 0 && storyId) {
+    // Navigate to the story viewer with the storyId
+    navigate(`/story/${storyId}/view`);
+  } else {
+    setSaveError("Story ID is missing. Please save your story first.");
+  }
+};
 
   // const handleGenerateCoverImage = async () => {
   //   if (!story || !story.coverPageVisualDescription) {
@@ -843,15 +868,15 @@ const StoryGenerator = ({ includeChild, childCharacter, storyType, onStoryGenera
                   
                   {scene.visualDescription && (
                     <div className="mt-3 pt-3 border-t border-gray-200">
-                      <h5 className="text-xs font-semibold text-gray-500 mb-1">Visual Prompt:</h5>
-                      <p className="text-xs text-gray-500 italic">{scene.visualDescription}</p>
+                      {/* <h5 className="text-xs font-semibold text-gray-500 mb-1">Visual Prompt:</h5> */}
+                      {/* <p className="text-xs text-gray-500 italic">{scene.visualDescription}</p> */}
                       
                       <div className="mt-3 flex gap-2">
                         <button 
                           className="px-2 py-1 text-xs bg-primary-500 text-white rounded hover:bg-primary-600 transition flex items-center"
                           onClick={() => handleGenerateSceneImage(scene.id, scene.visualDescription)}
                         >
-                          Generate Scene
+                          Edit Scene Image
                         </button>
                         {scene.image && (
                           <button 
