@@ -187,6 +187,22 @@ const generateStoryPrompt = asyncHandler(async (req, res) => {
     and follow along with. The story should be imaginative and creative, with interesting characters and settings. The story should also be age-appropriate and 
     not contain any violence or inappropriate content. 
 
+     CONTENT SAFETY REQUIREMENTS:
+    - Create only gentle, peaceful content suitable for young children
+    - Use positive, uplifting language throughout
+    - NEVER use any of the forbidden words listed in the guidelines
+    - Replace any potentially concerning elements with child-friendly alternatives
+    - Ensure all visual descriptions depict safe, nurturing environments
+    
+    FORBIDDEN VOCABULARY (NEVER USE THESE WORDS):
+    - Words related to forest fungi: mushroom, fungi, toadstool
+    - Words related to sharp objects: knife, blade, sword, cut, cutting
+    - Words related to violence: fight, battle, attack, hit, hurt
+    - Words related to weapons: gun, bomb, weapon
+    - Words related to harm: blood, death, die, kill
+    - Words related to substances: drug, alcohol, cigarette
+    - Words related to fear: scary, horror, monster
+
     IMPORTANT VISUAL CONTINUITY RULES:
     1. NEVER use character names in visual descriptions - always use full visual descriptions of each character
     2. Each visual description must be completely STANDALONE for an image generator that sees only that text
@@ -194,19 +210,6 @@ const generateStoryPrompt = asyncHandler(async (req, res) => {
     4. Include specific visual elements from previous scenes to create continuity
     5. Maintain consistent art style, lighting approach, and color palette throughout
     6. Keep ALL visual descriptions under 200 words
-
-    STRICTLY FORBIDDEN WORDS in visual descriptions:
-    
-       - "mushroom", "mushrooms", "fungi", "toadstool"
-       - "knife", "blade", "sword", "dagger", "weapon"
-       - "cut", "cutting", "slash", "stab", "pierce"
-       - "fight", "battle", "war", "attack", "hit"
-       - "blood", "gore", "wound", "injury", "hurt"
-       - "death", "die", "kill", "dead", "murder"
-       - "gun", "bullet", "shoot", "bomb", "explosive"
-       - "drug", "alcohol", "cigarette", "smoke", "drink"
-       - "scary", "horror", "nightmare", "monster", "demon"
-       - Any profanity or inappropriate language
 
     REMEMBER: Each visual description will be processed individually by an AI image generator with no knowledge 
     of other scenes or character names. They must work independently while creating visually consistent results.
