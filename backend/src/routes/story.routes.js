@@ -4,7 +4,9 @@ import {
   getAllUserStories,
   saveStory,
   generateSceneIllustration,
-  getStoryById
+  getStoryById,
+  generateBulkSceneIllustrations,
+  generateSanitizedSceneIllustration
 } from "../controllers/story.controller.js";
 import { verifyJWT } from "../middlewares/auth.middlewares.js";
 
@@ -18,5 +20,7 @@ router.route("/get-all-stories").get(verifyJWT, getAllUserStories);
 router.route("/save-story").post(verifyJWT, saveStory);
 router.route("/create-scene").post(verifyJWT, generateSceneIllustration);
 router.route("/get-story/:storyId").get(verifyJWT, getStoryById);
+router.route("/create-scenes-bulk").post(verifyJWT, generateBulkSceneIllustrations);
+router.route("/create-scene-sanitized").post(verifyJWT, generateSanitizedSceneIllustration);
 
 export default router;
