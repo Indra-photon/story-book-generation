@@ -105,7 +105,7 @@ const StorybookShowcase = () => {
           Magical Storybook Collection
         </div>
         
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-chewy leading-tight mb-6 text-white drop-shadow-[3px_3px_0px_rgba(61,29,140,1)]">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans leading-tight mb-6 text-white drop-shadow-[3px_3px_0px_rgba(61,29,140,1)]">
           Explore Our Enchanting Storybooks
         </h2>
         
@@ -146,7 +146,7 @@ const StorybookShowcase = () => {
                     }}
                 />
                 <div className="p-4 bg-gradient-to-r from-primary-400 to-secondary-400">
-                    <h3 className="font-chewy text-xl text-white drop-shadow-[1px_1px_0px_rgba(61,29,140,1)] text-center">
+                    <h3 className="font-sans text-xl text-white drop-shadow-[1px_1px_0px_rgba(61,29,140,1)] text-center">
                     {book.title}
                     </h3>
                 </div>
@@ -160,12 +160,12 @@ const StorybookShowcase = () => {
       <div className="container mx-auto px-4 mt-12">
         <div className="bg-white/10 backdrop-blur-sm border border-violet-100 rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between">
           <div className="text-white mb-6 md:mb-0 md:mr-8">
-            <h3 className="text-2xl font-chewy mb-2">Create Your Own Storybook Today!</h3>
+            <h3 className="text-2xl font-sans mb-2">Create Your Own Storybook Today!</h3>
             <p className="text-white/90">Transform your child's photo into a magical adventure in just a few clicks.</p>
           </div>
           
           <Link to='/signup'>
-            <button className="bg-accent px-8 py-4 rounded-full text-lg font-chewy text-dark shadow-button hover:-translate-y-1 transform transition duration-200 flex items-center whitespace-nowrap">
+            <button className="bg-accent px-8 py-4 rounded-full text-lg font-sans text-dark shadow-button hover:-translate-y-1 transform transition duration-200 flex items-center whitespace-nowrap">
               <span>Get Started</span>
               <ChevronRight size={20} className="ml-2" />
             </button> 

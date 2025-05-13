@@ -67,7 +67,7 @@ const StoryBookDemo = () => {
     <div className="max-w-6xl mx-auto p-6 font-sans">
       {/* Storybook title */}
       <div className="text-center mb-6">
-        <h1 className="text-3xl font-chewy text-dark">Interactive Storybook Viewer</h1>
+        <h1 className="text-3xl font-sans text-dark">Interactive Storybook Viewer</h1>
         <p className="text-gray-600">Preview your story and download as PDF</p>
       </div>
       
@@ -134,7 +134,7 @@ const StoryBookDemo = () => {
           }}
         >
           <div className="flex flex-col items-center justify-center h-full text-white text-center p-8">
-            <h2 className="text-4xl md:text-6xl font-chewy mb-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+            <h2 className="text-4xl md:text-6xl font-sans mb-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
               {sampleStory.title}
             </h2>
             
@@ -148,7 +148,7 @@ const StoryBookDemo = () => {
             
             <div className="mt-6">
               <p className="text-xl">A story created with CharaFun</p>
-              <p className="text-2xl font-chewy mt-2">By {sampleStory.author}</p>
+              <p className="text-2xl font-sans mt-2">By {sampleStory.author}</p>
             </div>
             
             {/* Decorative elements */}
@@ -168,7 +168,7 @@ const StoryBookDemo = () => {
             <div className="h-full flex flex-col p-8">
               {/* Page header */}
               <div className="mb-4">
-                <h3 className="text-2xl font-chewy text-primary-500">
+                <h3 className="text-2xl font-sans text-primary-500">
                   {sampleStory.title} - Page {index + 1}
                 </h3>
               </div>
@@ -209,7 +209,7 @@ const StoryBookDemo = () => {
       
       {/* Additional information */}
       <div className="bg-light rounded-xl p-6 shadow-md">
-        <h3 className="text-xl font-chewy text-dark mb-3">About PDF Generation</h3>
+        <h3 className="text-xl font-sans text-dark mb-3">About PDF Generation</h3>
         <p className="text-gray-700 mb-4">
           In a real implementation, this component would generate a high-quality PDF file of your storybook 
           that maintains all the design elements, typography, and imagery shown in this preview.

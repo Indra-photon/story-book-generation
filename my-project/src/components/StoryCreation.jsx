@@ -129,7 +129,7 @@
 //       <div className="max-w-6xl mx-auto">
 //         {/* Header */}
 //         <div className="mb-8 flex items-center justify-between">
-//           <h1 className="text-3xl md:text-4xl font-chewy text-dark">Create Your Story</h1>
+//           <h1 className="text-3xl md:text-4xl font-sans text-dark">Create Your Story</h1>
 //           <button 
 //             onClick={handleBack}
 //             className="flex items-center text-gray-600 hover:text-gray-800"
@@ -254,7 +254,7 @@ const StoryCreation = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-3xl md:text-4xl font-chewy text-dark">Create Your Story</h1>
+          <h1 className="text-3xl md:text-4xl font-sans text-dark">Create Your Story</h1>
           <button 
             onClick={handleBack}
             className="flex items-center text-gray-600 hover:text-gray-800"

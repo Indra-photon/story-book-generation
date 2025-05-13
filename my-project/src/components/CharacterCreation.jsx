@@ -94,7 +94,7 @@ const CharacterCreation = () => {
     <div className="min-h-screen bg-light py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-chewy text-dark">{getStepTitle()}</h1>
+          <h1 className="text-3xl md:text-4xl font-sans text-dark">{getStepTitle()}</h1>
           <div className="text-gray-500 flex items-center">
             <Clock size={18} className="mr-2" />
             <span>Step {activeStep} of {totalSteps}</span>

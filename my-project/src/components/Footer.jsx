@@ -8,7 +8,7 @@
 //       <div className="container mx-auto px-4">
 //         {/* CTA section */}
 //         <div className="py-16 text-center">
-//           <h2 className="text-3xl md:text-4xl font-chewy mb-4">Ready to Bring Your Portrait to Life?</h2>
+//           <h2 className="text-3xl md:text-4xl font-sans mb-4">Ready to Bring Your Portrait to Life?</h2>
 //           <p className="text-white/80 max-w-xl mx-auto mb-8">
 //             Join thousands of creators who have transformed their online presence with animated characters
 //           </p>
@@ -31,7 +31,7 @@
 //                 <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold">
 //                   C
 //                 </div>
-//                 <span className="text-2xl font-chewy text-white">CharaFun</span>
+//                 <span className="text-2xl font-sans text-white">CharaFun</span>
 //               </div>
 //               <p className="text-white/70 mb-6">
 //                 Transform your portrait photos into animated cartoon characters with our powerful AI technology.
@@ -124,7 +124,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         {/* CTA section */}
         <div className="py-16 text-center">
-          <h2 className="text-3xl md:text-4xl font-chewy mb-4">Ready to Create Magical Stories?</h2>
+          <h2 className="text-3xl md:text-4xl font-sans mb-4">Ready to Create Magical Stories?</h2>
           <p className="text-white/80 max-w-xl mx-auto mb-8">
             Join thousands of parents who have created personalized storybooks featuring their children
           </p>
@@ -144,7 +144,7 @@ const Footer = () => {
                 <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold">
                   S
                 </div>
-                <span className="text-2xl font-chewy text-white">StoryTeller</span>
+                <span className="text-2xl font-sans text-white">StoryTeller</span>
               </div>
               <p className="text-white/70 mb-6">
                 Create personalized storybooks featuring your child as the main character with our magical AI technology.

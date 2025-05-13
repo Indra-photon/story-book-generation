@@ -23,7 +23,7 @@ const Gallery = () => {
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-chewy text-dark mb-4">Gallery of Transformations</h2>
+          <h2 className="text-4xl md:text-5xl font-sans text-dark mb-4">Gallery of Transformations</h2>
           <p className="text-xl max-w-3xl mx-auto text-gray-600">
             See how people have transformed their portraits into amazing animated characters
           </p>

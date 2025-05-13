@@ -5,7 +5,7 @@ import { UserPlus, Book, Clock } from 'lucide-react';
 const StoryStartPrompt = ({ onChoice }) => {
   return (
     <div className="p-8 text-center">
-      <h2 className="text-2xl font-chewy text-dark mb-6">Choose whether you want to build story with your kids as character</h2>
+      <h2 className="text-2xl font-sans text-dark mb-6">Choose whether you want to build story with your kids as character</h2>
       
       <p className="text-gray-600 max-w-2xl mx-auto mb-10">
         We can create a personalized story featuring your child as a character, or we can
@@ -22,7 +22,7 @@ const StoryStartPrompt = ({ onChoice }) => {
             <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mb-4">
               <UserPlus size={32} className="text-white" />
             </div>
-            <h3 className="text-xl font-chewy text-dark mb-2">Yes, Include My Child</h3>
+            <h3 className="text-xl font-sans text-dark mb-2">Yes, Include My Child</h3>
             <p className="text-gray-600 text-sm">
               Create a personalized story with your child as the main character. Your child
               will go on adventures and be the hero of their own tale!
@@ -47,7 +47,7 @@ const StoryStartPrompt = ({ onChoice }) => {
                 <UserPlus size={32} className="text-gray-500" />
               </div>
               
-              <h3 className="text-xl font-chewy text-gray-600 mb-2 text-center">Yes, Include My Child</h3>
+              <h3 className="text-xl font-sans text-gray-600 mb-2 text-center">Yes, Include My Child</h3>
               
               <p className="text-gray-600 text-sm text-center">
                 Create a personalized story with your child as the main character. Your child
@@ -70,12 +70,12 @@ const StoryStartPrompt = ({ onChoice }) => {
             <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-4">
               <Book size={32} className="text-dark" />
             </div>
-            <h3 className="text-xl font-chewy text-dark mb-2">No, Use Characters</h3>
+            <h3 className="text-xl font-sans text-dark mb-2">No, Use Characters</h3>
             <p className="text-gray-600 text-sm">
               Create a story using our library of delightful characters. Perfect for creating
               fun, engaging stories for any child.
             </p>
-            <button className="mt-6 px-6 py-3 bg-accent text-dark font-bold rounded-full hover:bg-accent/90 transition">
+            <button className="mt-6 px-6 py-3 bg-accent text-dark font-semibold rounded-full hover:bg-accent/90 transition">
               Use Our Characters
             </button>
           </div>

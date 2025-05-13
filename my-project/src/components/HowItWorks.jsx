@@ -7,7 +7,7 @@ const HowItWorks = () => {
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-chewy text-dark mb-4">How It Works</h2>
+          <h2 className="text-4xl md:text-5xl font-sans text-dark mb-4">How It Works</h2>
           <p className="text-xl max-w-3xl mx-auto text-gray-600">
             Transform your portrait into an animated cartoon character in just three simple steps
           </p>
@@ -18,10 +18,10 @@ const HowItWorks = () => {
           {/* Step 1 */}
           <div className="flex flex-col items-center">
             <div className="relative mb-6">
-              <div className="w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center text-3xl font-chewy text-white">1</div>
+              <div className="w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center text-3xl font-sans text-white">1</div>
               <div className="hidden md:block absolute top-1/2 left-full w-full h-4 bg-accent2 transform -translate-y-1/2 -z-10"></div>
             </div>
-            <h3 className="text-2xl font-chewy text-dark mb-3">Upload Your Portrait</h3>
+            <h3 className="text-2xl font-sans text-dark mb-3">Upload Your Portrait</h3>
             <p className="text-center text-gray-600 mb-6">
               Take a selfie or upload your favorite portrait photo through our easy-to-use interface.
             </p>
@@ -48,10 +48,10 @@ const HowItWorks = () => {
           {/* Step 2 */}
           <div className="flex flex-col items-center">
             <div className="relative mb-6">
-              <div className="w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center text-3xl font-chewy text-white">2</div>
+              <div className="w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center text-3xl font-sans text-white">2</div>
               <div className="hidden md:block absolute top-1/2 left-full w-full h-4 bg-accent2 transform -translate-y-1/2 -z-10"></div>
             </div>
-            <h3 className="text-2xl font-chewy text-dark mb-3">AI Transformation</h3>
+            <h3 className="text-2xl font-sans text-dark mb-3">AI Transformation</h3>
             <p className="text-center text-gray-600 mb-6">
               Our Leonardo AI technology analyzes your photo and transforms it into a cartoon character.
             </p>
@@ -90,9 +90,9 @@ const HowItWorks = () => {
           {/* Step 3 */}
           <div className="flex flex-col items-center">
             <div className="relative mb-6">
-              <div className="w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center text-3xl font-chewy text-white">3</div>
+              <div className="w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center text-3xl font-sans text-white">3</div>
             </div>
-            <h3 className="text-2xl font-chewy text-dark mb-3">Add Animation</h3>
+            <h3 className="text-2xl font-sans text-dark mb-3">Add Animation</h3>
             <p className="text-center text-gray-600 mb-6">
               Kling AI brings your character to life with customizable animations ready to share.
             </p>
@@ -128,7 +128,7 @@ const HowItWorks = () => {
         
         {/* CTA */}
         <div className="mt-16 text-center">
-          <button className="px-8 py-4 bg-accent text-dark font-chewy text-xl rounded-full shadow-button hover:-translate-y-1 transform transition duration-200">
+          <button className="px-8 py-4 bg-accent text-dark font-sans text-xl rounded-full shadow-button hover:-translate-y-1 transform transition duration-200">
             Try It Now - Free!
           </button>
         </div>

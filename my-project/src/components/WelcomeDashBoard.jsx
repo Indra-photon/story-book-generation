@@ -7,7 +7,7 @@ const WelcomeDashboard = ({ onStartCreating }) => {
   return (
     <div className="bg-white rounded-2xl shadow-lg p-8">
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-chewy text-dark mb-4">Welcome to Your Creation Dashboard!</h2>
+        <h2 className="text-3xl font-sans text-dark mb-4">Welcome to Your Creation Dashboard!</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
           Turn your ideas into animated characters and stories with our easy-to-use tools powered by AI. 
           Get started by choosing what you'd like to create today.
@@ -21,7 +21,7 @@ const WelcomeDashboard = ({ onStartCreating }) => {
               <Zap size={24} className="text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-chewy text-dark mb-2">Quick Start</h3>
+              <h3 className="text-xl font-sans text-dark mb-2">Quick Start</h3>
               <p className="text-gray-700">
                 Ready to create? Click and go to the dashboard
               </p>
@@ -42,7 +42,7 @@ const WelcomeDashboard = ({ onStartCreating }) => {
               <Star size={24} className="text-dark" />
             </div>
             <div>
-              <h3 className="text-xl font-chewy text-dark mb-2">Your Creations</h3>
+              <h3 className="text-xl font-sans text-dark mb-2">Your Creations</h3>
               <p className="text-gray-700">
                 Go to your profile to get back your creations
               </p>

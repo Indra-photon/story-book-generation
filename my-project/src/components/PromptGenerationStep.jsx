@@ -97,7 +97,7 @@ const PromptGenerationStep = ({
     <div className="flex flex-col space-y-10">
       {/* First row - Upload Portrait & Details */}
       <div className="bg-white rounded-2xl shadow-lg p-6">
-        <h2 className="text-2xl font-chewy text-dark mb-6">Upload Portrait & Details</h2>
+        <h2 className="text-2xl font-sans text-dark mb-6">Upload Portrait & Details</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Portrait upload section */}
@@ -285,7 +285,7 @@ const PromptGenerationStep = ({
 
       {/* Second row - Character Prompt */}
       <div className="bg-white rounded-2xl shadow-lg p-6">
-        <h2 className="text-2xl font-chewy text-dark mb-6">Character Prompt</h2>
+        <h2 className="text-2xl font-sans text-dark mb-6">Character Prompt</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex-grow mb-6">

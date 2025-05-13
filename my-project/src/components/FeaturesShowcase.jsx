@@ -162,7 +162,7 @@
 //             initial={{ opacity: 0, scale: 0.5 }}
 //             animate={{ opacity: 1, scale: 1 }}
 //             transition={{ duration: 0.6, delay: 0.5 }}
-//             className="text-4xl md:text-5xl font-chewy text-dark mb-4 drop-shadow-[2px_2px_0px_rgba(61,29,140,0.3)]"
+//             className="text-4xl md:text-5xl font-sans text-dark mb-4 drop-shadow-[2px_2px_0px_rgba(61,29,140,0.3)]"
 //           >
 //             Create Enchanting Stories With Ease
 //           </motion.h2>
@@ -205,7 +205,7 @@
 //                 initial={{ opacity: 0, x: -20 }}
 //                 animate={{ opacity: 1, x: 0 }}
 //                 transition={{ delay: 0.4 + index * 0.1 }}
-//                 className="text-2xl font-chewy text-dark mb-3"
+//                 className="text-2xl font-sans text-dark mb-3"
 //               >
 //                 {feature.title}
 //               </motion.h3>
@@ -231,12 +231,12 @@
 //           transition={{ duration: 0.6, delay: 2 }}
 //           className="text-center"
 //         >
-//           <h3 className="text-2xl md:text-3xl font-chewy text-dark mb-6">Ready to Create a Magical Storybook?</h3>
+//           <h3 className="text-2xl md:text-3xl font-sans text-dark mb-6">Ready to Create a Magical Storybook?</h3>
 //           <Link to='/signup'>
 //             <motion.button 
 //               whileHover={{ scale: 1.05, rotate: [-1, 1, -1, 0] }}
 //               whileTap={{ scale: 0.95 }}
-//               className="px-8 py-4 bg-accent text-dark font-chewy text-xl rounded-full shadow-button transform transition duration-200"
+//               className="px-8 py-4 bg-accent text-dark font-sans text-xl rounded-full shadow-button transform transition duration-200"
 //             >
 //               Start Creating Now
 //             </motion.button>
@@ -488,7 +488,7 @@ const FeaturesShowcase = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-4xl md:text-5xl font-chewy text-dark mb-4 drop-shadow-[2px_2px_0px_rgba(61,29,140,0.3)]"
+            className="text-4xl md:text-5xl font-sans leading-tight text-white drop-shadow-[3px_3px_0px_rgba(61,29,140,1)] mb-4"
           >
             Create Enchanting Stories With Ease
           </motion.h2>
@@ -497,7 +497,7 @@ const FeaturesShowcase = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-xl max-w-3xl mx-auto text-gray-600"
+            className="text-xl max-w-3xl mx-auto text-white/90"
           >
             Our platform makes it simple to create personalized, vibrant storybooks that will delight your child and become treasured keepsakes.
           </motion.p>
@@ -539,7 +539,7 @@ const FeaturesShowcase = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.8 + index * 0.1 }}
-                className="text-2xl font-chewy text-dark mb-3 relative z-10"
+                className="text-2xl font-sans text-dark mb-3 relative z-10"
               >
                 {feature.title}
               </motion.h3>
@@ -557,7 +557,7 @@ const FeaturesShowcase = () => {
               <motion.div
                 className="absolute top-0 right-0 w-8 h-8"
                 initial={{ scale: 0, rotate: 0 }}
-                animate={{ scale: 1, rotate: 45 }}
+                animate={{ scale: 1 }}
                 transition={{ delay: 1 + index * 0.1 }}
               >
                 <div className={`w-full h-full bg-${feature.color}-200 rounded-sm`} />
@@ -573,12 +573,12 @@ const FeaturesShowcase = () => {
           transition={{ duration: 0.6, delay: 2 }}
           className="text-center"
         >
-          <h3 className="text-2xl md:text-3xl font-chewy text-dark mb-6">Ready to Create a Magical Storybook?</h3>
+          <h3 className="text-2xl md:text-3xl font-sans text-dark mb-6">Ready to Create a Magical Storybook?</h3>
           <Link to='/signup'>
             <motion.button 
               whileHover={{ scale: 1.05, rotate: [-1, 1, -1, 0] }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-accent text-dark font-chewy text-xl rounded-full shadow-button transform transition duration-200"
+              className="px-8 py-4 bg-accent text-dark font-sans text-xl rounded-full shadow-button transform transition duration-200"
             >
               Start Creating Now
             </motion.button>

@@ -18,7 +18,7 @@ const TryItNow = () => {
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-chewy text-dark mb-4">Try It Before You Sign Up</h2>
+          <h2 className="text-4xl md:text-5xl font-sans text-dark mb-4">Try It Before You Sign Up</h2>
           <p className="text-xl max-w-3xl mx-auto text-gray-600">
             See the magic in action with our interactive demo
           </p>
@@ -30,7 +30,7 @@ const TryItNow = () => {
             {/* Left side - sample image */}
             <div className="flex flex-col items-center">
               <div className="mb-6 text-center">
-                <h3 className="text-2xl font-chewy text-dark mb-2">Sample Portrait</h3>
+                <h3 className="text-2xl font-sans text-dark mb-2">Sample Portrait</h3>
                 <p className="text-gray-600 text-sm">
                   Try different styles on our sample image or upload your own
                 </p>
@@ -58,7 +58,7 @@ const TryItNow = () => {
             {/* Right side - results and controls */}
             <div className="flex flex-col">
               <div className="mb-6 text-center">
-                <h3 className="text-2xl font-chewy text-dark mb-2">See The Result</h3>
+                <h3 className="text-2xl font-sans text-dark mb-2">See The Result</h3>
                 <p className="text-gray-600 text-sm">
                   Customize your character with different styles and animations
                 </p>

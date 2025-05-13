@@ -60,7 +60,7 @@ const StoryCanvas = ({ story, scenes }) => {
               style={{ backgroundImage: `url('${story.coverPageImage}')` }}
             >
               <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col items-center justify-center p-6">
-                <h1 className="text-4xl md:text-5xl font-chewy text-white mb-4 text-center shadow-text">{story.title}</h1>
+                <h1 className="text-4xl md:text-5xl font-sans text-white mb-4 text-center shadow-text">{story.title}</h1>
                 {story.mainCharacter && (
                   <p className="text-xl text-white text-center shadow-text">
                     A story about {story.mainCharacter.name}
@@ -70,7 +70,7 @@ const StoryCanvas = ({ story, scenes }) => {
             </div>
           ) : (
             <div className="w-full h-full bg-gradient-to-b from-primary-100 to-primary-500 flex flex-col items-center justify-center p-6">
-              <h1 className="text-4xl md:text-5xl font-chewy text-white mb-4 text-center shadow-text">{story.title}</h1>
+              <h1 className="text-4xl md:text-5xl font-sans text-white mb-4 text-center shadow-text">{story.title}</h1>
               {story.mainCharacter && (
                 <p className="text-xl text-white text-center shadow-text">
                   A story about {story.mainCharacter.name}
@@ -101,12 +101,12 @@ const StoryCanvas = ({ story, scenes }) => {
               style={{ backgroundImage: `url('${story.endPageImage}')` }}
             >
               <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col items-center justify-center p-6">
-                <h2 className="text-4xl font-chewy text-white mb-4 text-center shadow-text">The End</h2>
+                <h2 className="text-4xl font-sans text-white mb-4 text-center shadow-text">The End</h2>
               </div>
             </div>
           ) : (
             <div className="w-full h-full bg-gradient-to-b from-accent/50 to-accent flex flex-col items-center justify-center p-6">
-              <h2 className="text-4xl font-chewy text-dark mb-4 text-center">The End</h2>
+              <h2 className="text-4xl font-sans text-dark mb-4 text-center">The End</h2>
             </div>
           )}
         </div>
@@ -833,7 +833,7 @@ const StoryCanvas = ({ story, scenes }) => {
       <div className="fixed inset-0 z-50 m-28 flex flex-col">
         {/* Header */}
         <div className="p-4 flex justify-between items-center shadow-md">
-          <h1 className="text-2xl font-chewy text-gray-800">{story?.title || 'Your Story'}</h1>
+          <h1 className="text-2xl font-sans text-gray-800">{story?.title || 'Your Story'}</h1>
           <div className="flex items-center gap-3">
             <button
               onClick={generatePDF}
@@ -863,7 +863,7 @@ const StoryCanvas = ({ story, scenes }) => {
                   style={{ backgroundImage: `url('${story.coverPageImage}')` }}
                 >
                   <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center p-6">
-                    <h1 className="text-5xl md:text-6xl font-chewy text-white mb-6 text-center shadow-text">{story.title}</h1>
+                    <h1 className="text-5xl md:text-6xl font-sans text-white mb-6 text-center shadow-text">{story.title}</h1>
                     {story.mainCharacter && (
                       <p className="text-2xl text-white text-center shadow-text">
                         A story about {story.mainCharacter.name}
@@ -873,7 +873,7 @@ const StoryCanvas = ({ story, scenes }) => {
                 </div>
               ) : (
                 <div className="w-full h-full bg-gradient-to-b from-primary-300 to-primary-600 flex flex-col items-center justify-center p-6">
-                  <h1 className="text-5xl md:text-6xl font-chewy text-white mb-6 text-center shadow-text">{story.title}</h1>
+                  <h1 className="text-5xl md:text-6xl font-sans text-white mb-6 text-center shadow-text">{story.title}</h1>
                   {story.mainCharacter && (
                     <p className="text-2xl text-white text-center shadow-text">
                       A story about {story.mainCharacter.name}
@@ -926,12 +926,12 @@ const StoryCanvas = ({ story, scenes }) => {
                   style={{ backgroundImage: `url('${story.endPageImage}')` }}
                 >
                   <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center p-6">
-                    <h2 className="text-5xl font-chewy text-white mb-6 text-center shadow-text">The End</h2>
+                    <h2 className="text-5xl font-sans text-white mb-6 text-center shadow-text">The End</h2>
                   </div>
                 </div>
               ) : (
                 <div className="w-full h-full bg-gradient-to-b from-accent/70 to-accent flex flex-col items-center justify-center p-6">
-                  <h2 className="text-5xl font-chewy text-dark mb-6 text-center">The End</h2>
+                  <h2 className="text-5xl font-sans text-dark mb-6 text-center">The End</h2>
                 </div>
               )}
               
@@ -1027,7 +1027,7 @@ const StoryCanvas = ({ story, scenes }) => {
   return (
     <div className="p-8">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-chewy text-dark">{story?.title || 'Your Story'}</h2>
+        <h2 className="text-2xl font-sans text-dark">{story?.title || 'Your Story'}</h2>
         
         <div className="flex space-x-3">
           <button

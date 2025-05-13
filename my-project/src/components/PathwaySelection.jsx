@@ -6,7 +6,7 @@ import pic2 from '../../public/hero1.jpeg'
 const PathwaySelection = ({ onSelectPathway }) => {
   return (
     <div className="bg-white rounded-2xl shadow-lg p-8 border border-primary-100">
-      <h2 className="text-3xl font-chewy text-dark mb-6 text-center drop-shadow-[2px_2px_0px_rgba(61,29,140,0.2)]">
+      <h2 className="text-3xl font-sans text-dark mb-6 text-center drop-shadow-[2px_2px_0px_rgba(61,29,140,0.2)]">
         Choose Your Magical Journey
       </h2>
       <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
@@ -47,7 +47,7 @@ const PathwaySelection = ({ onSelectPathway }) => {
             </div>
             
             <div className="relative z-20">
-              <h3 className="text-2xl font-chewy text-dark mb-3 text-center">
+              <h3 className="text-2xl font-sans font-semibold text-dark mb-3 text-center">
                 Create Magical Storybooks
               </h3>
               <p className="text-gray-600 text-center mb-6">
@@ -89,7 +89,7 @@ const PathwaySelection = ({ onSelectPathway }) => {
             </div>
             
             <div className="relative z-10">
-              <h3 className="text-2xl font-chewy text-dark mb-3 text-center">
+              <h3 className="text-2xl font-sans text-dark mb-3 text-center">
                 Create Fun Characters with your kid's image
               </h3>
               <p className="text-gray-900 text-center mb-6">

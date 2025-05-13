@@ -5,7 +5,7 @@ import { Sparkles, ArrowRight } from 'lucide-react';
 const EffectsStep = ({ selectedImage, handleNextStep }) => {
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6">
-      <h2 className="text-2xl font-chewy text-dark mb-6">Apply Effects</h2>
+      <h2 className="text-2xl font-sans text-dark mb-6">Apply Effects</h2>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         <div>
