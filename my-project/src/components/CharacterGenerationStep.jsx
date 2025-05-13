@@ -211,7 +211,7 @@
 
 //   return (
 //     <div className="bg-white rounded-2xl shadow-lg p-6">
-//       <h2 className="text-2xl font-chewy text-dark mb-6">Generate Character</h2>
+//       <h2 className="text-2xl font-sans text-dark mb-6">Generate Character</h2>
       
 //       <div className="mb-8">
 //         {generatedPrompt && (
@@ -393,7 +393,7 @@
 //       {/* Generated images grid */}
 //       {generatedImages.length > 0 && (
 //         <div className="mt-8">
-//           <h3 className="text-xl font-chewy text-dark mb-4">Generated Characters</h3>
+//           <h3 className="text-xl font-sans text-dark mb-4">Generated Characters</h3>
 //           <p className="text-gray-600 mb-4">Select the character you want to animate:</p>
           
 //           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -939,7 +939,7 @@ const CharacterGenerationStep = ({
 
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6">
-      <h2 className="text-2xl font-chewy text-dark mb-6">Generate Character</h2>
+      <h2 className="text-2xl font-sans text-dark mb-6">Generate Character</h2>
       
       <div className="mb-8">
         {generatedPrompt && (
@@ -1125,7 +1125,7 @@ const CharacterGenerationStep = ({
       {/* Generated images grid */}
       {generatedImages.length > 0 && (
         <div className="mt-8">
-          <h3 className="text-xl font-chewy text-dark mb-4">Generated Characters</h3>
+          <h3 className="text-xl font-sans text-dark mb-4">Generated Characters</h3>
           <p className="text-gray-600 mb-4">Select the character you want to animate:</p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

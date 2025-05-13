@@ -66,7 +66,7 @@ const ChildCharacterForm = ({ onSubmit }) => {
 
   return (
     <div className="p-8">
-      <h2 className="text-2xl font-chewy text-dark mb-6">Create your child's description</h2>
+      <h2 className="text-2xl font-sans text-dark mb-6">Create your child's description</h2>
       
       <form onSubmit={handleSubmit} className="max-w-3xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">

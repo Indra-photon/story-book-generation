@@ -218,7 +218,7 @@
 //   return (
 //     <div className="min-h-screen bg-light py-20 px-4">
 //       <div className="max-w-6xl mx-auto">
-//         <h1 className="text-3xl md:text-4xl font-chewy text-dark mb-8">My Profile</h1>
+//         <h1 className="text-3xl md:text-4xl font-sans text-dark mb-8">My Profile</h1>
         
 //         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 //           {/* Left column: User details */}
@@ -411,7 +411,7 @@
 //             {/* Story History */}
 //             <div className="bg-white rounded-2xl shadow-lg overflow-hidden mt-8">
 //               <div className="bg-gradient-primary p-6">
-//                 <h3 className="text-xl font-chewy text-white mb-0">My Story History</h3>
+//                 <h3 className="text-xl font-sans text-white mb-0">My Story History</h3>
 //                 {/* Optional: Add story count */}
 //                 <p className="text-white text-sm">
 //                   Total Stories: {storyHistory.metadata?.totalStories || 0}
@@ -503,7 +503,7 @@
 //             {/* Token information */}
 //             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
 //               <div className="bg-gradient-primary p-6">
-//                 <h3 className="text-xl font-chewy text-white mb-2">My Tokens</h3>
+//                 <h3 className="text-xl font-sans text-white mb-2">My Tokens</h3>
 //                 <div className="flex items-center text-white">
 //                   <Zap size={20} className="mr-2" />
 //                   <span className="text-2xl font-bold">{userData?.tokens?.balance || 0}</span>
@@ -574,7 +574,7 @@
 //             {/* Subscription information */}
 //             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
 //               <div className="bg-gradient-primary p-6">
-//                 <h3 className="text-xl font-chewy text-white mb-2">Subscription</h3>
+//                 <h3 className="text-xl font-sans text-white mb-2">Subscription</h3>
 //                 <div className="flex items-center justify-between">
 //                   <div>
 //                     <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${getTierBadgeColor(userData?.subscription?.tier || 'free')}`}>
@@ -1244,7 +1244,7 @@ const Profile = () => {
   return (
     <div className="min-h-screen bg-light py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-chewy text-dark mb-8">My Profile</h1>
+        <h1 className="text-3xl md:text-4xl font-sans text-dark mb-8">My Profile</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left column: User details */}
@@ -1426,7 +1426,7 @@ const Profile = () => {
             {/* Story History */}
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden mt-8">
               <div className="bg-gradient-primary p-6">
-                <h3 className="text-xl font-chewy text-white mb-0">My Story History</h3>
+                <h3 className="text-xl font-sans text-white mb-0">My Story History</h3>
                 <p className="text-white text-sm">
                   Total Stories: {storyHistory.metadata?.totalStories || 0}
                 </p>
@@ -1517,7 +1517,7 @@ const Profile = () => {
             {/* Token information */}
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="bg-gradient-primary p-6">
-                <h3 className="text-xl font-chewy text-white mb-2">My Tokens</h3>
+                <h3 className="text-xl font-sans text-white mb-2">My Tokens</h3>
                 <div className="flex items-center text-white">
                   <Zap size={20} className="mr-2" />
                   <span className="text-2xl font-bold">{userData?.tokens?.balance || 0}</span>
@@ -1616,7 +1616,7 @@ const Profile = () => {
             {/* Subscription information */}
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="bg-gradient-primary p-6">
-                <h3 className="text-xl font-chewy text-white mb-2">Subscription</h3>
+                <h3 className="text-xl font-sans text-white mb-2">Subscription</h3>
                 <div className="flex items-center justify-between">
                   <div>
                     <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${getTierBadgeColor(userData?.subscription?.tier || 'free')}`}>

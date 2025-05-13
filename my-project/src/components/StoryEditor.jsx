@@ -867,7 +867,7 @@ const [endPageImage, setEndPageImage] = useState(null);
       {/* Cover Page */}
       <div className="bg-white rounded-xl shadow-md overflow-hidden mb-8">
         <div className="bg-gradient-primary p-4">
-          <h2 className="text-xl font-chewy text-white">Cover Page</h2>
+          <h2 className="text-xl font-sans text-white">Cover Page</h2>
         </div>
         
         <div className="p-6">
@@ -928,7 +928,7 @@ const [endPageImage, setEndPageImage] = useState(null);
       {/* Story Scenes */}
       <div className="bg-white rounded-xl shadow-md overflow-hidden mb-8">
         <div className="bg-gradient-primary p-4">
-          <h2 className="text-xl font-chewy text-white">Story Scenes</h2>
+          <h2 className="text-xl font-sans text-white">Story Scenes</h2>
         </div>
         
         <div className="p-6">
@@ -1043,7 +1043,7 @@ const [endPageImage, setEndPageImage] = useState(null);
       {/* End Page */}
       <div className="bg-white rounded-xl shadow-md overflow-hidden mb-8">
         <div className="bg-gradient-primary p-4">
-          <h2 className="text-xl font-chewy text-white">End Page</h2>
+          <h2 className="text-xl font-sans text-white">End Page</h2>
         </div>
         
         <div className="p-6">

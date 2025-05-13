@@ -62,7 +62,7 @@ const FAQ = () => {
             Common Questions
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-chewy text-dark mb-4 drop-shadow-[2px_2px_0px_rgba(61,29,140,0.3)]">
+          <h2 className="text-4xl md:text-5xl font-sans text-dark mb-4 drop-shadow-[2px_2px_0px_rgba(61,29,140,0.3)]">
             Frequently Asked Questions
           </h2>
           
@@ -115,7 +115,7 @@ const FAQ = () => {
           <div className="absolute -left-16 -bottom-16 w-48 h-48 bg-primary-300/10 rounded-full"></div>
           
           <div className="relative text-center">
-            <h3 className="text-2xl md:text-3xl font-chewy text-dark mb-4">Have More Questions?</h3>
+            <h3 className="text-2xl md:text-3xl font-sans text-dark mb-4">Have More Questions?</h3>
             
             <p className="text-gray-600 mb-6 max-w-xl mx-auto">
               Our friendly support team is ready to help you create the perfect storybook for your child. Get in touch anytime!

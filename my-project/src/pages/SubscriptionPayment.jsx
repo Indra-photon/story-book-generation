@@ -167,7 +167,7 @@ const SubscriptionPayment = () => {
         <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full">
           <div className="flex flex-col items-center justify-center">
             <RefreshCw size={48} className="text-primary-500 animate-spin mb-4" />
-            <h2 className="text-2xl font-chewy text-dark mb-2">Loading Plan Details</h2>
+            <h2 className="text-2xl font-sans text-dark mb-2">Loading Plan Details</h2>
             <p className="text-gray-600 text-center">
               Please wait while we fetch your plan information...
             </p>
@@ -204,7 +204,7 @@ const SubscriptionPayment = () => {
             <div className="flex justify-between items-center">
                 
               <div>
-                <h2 className="text-2xl font-chewy">{planDetails.name} Plan</h2>
+                <h2 className="text-2xl font-sans">{planDetails.name} Plan</h2>
                 <p className="opacity-90">Subscription details</p>
               </div>
               <div className="text-right">

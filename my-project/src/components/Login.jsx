@@ -125,9 +125,9 @@ const Login = () => {
               <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold">
                 S
               </div>
-              <span className="text-2xl font-chewy text-primary-500">StoryTeller</span>
+              <span className="text-2xl font-sans text-primary-500">StoryTeller</span>
             </Link> */}
-            <h2 className="text-3xl font-chewy text-dark">Welcome Back!</h2>
+            <h2 className="text-3xl font-sans text-dark">Welcome Back!</h2>
             <p className="text-gray-600 mt-2">
               Sign in to access your account
             </p>

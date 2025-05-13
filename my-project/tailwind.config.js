@@ -42,7 +42,7 @@ module.exports = {
         chewy: ['Chewy', 'cursive'],
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #FF47DA 0%, #5D4DFF 100%)',
+        'gradient-primary': 'linear-gradient(135deg, #A259FF 0%, #FF6EC7 100%)',
       },
       boxShadow: {
         'button': '0 4px 0 #3D1D8C',

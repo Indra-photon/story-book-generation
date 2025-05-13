@@ -723,7 +723,7 @@ const StoryGenerator = ({ includeChild, childCharacter, storyType, onStoryGenera
   return (
     <div className="p-8">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-chewy text-dark">Generate Your Story</h2>
+        <h2 className="text-2xl font-sans text-dark">Generate Your Story</h2>
         
         {/* Token balance display */}
         {remainingTokens !== null && (

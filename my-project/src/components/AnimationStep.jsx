@@ -227,7 +227,7 @@ const generateAnimation = async () => {
 
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6">
-      <h2 className="text-2xl font-chewy text-dark mb-6">Choose Animation</h2>
+      <h2 className="text-2xl font-sans text-dark mb-6">Choose Animation</h2>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Left Column: Character Image and Preview */}

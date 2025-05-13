@@ -39,7 +39,7 @@ const Hero = () => {
             AI-Powered Character & Story Creation
           </div>
           
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-chewy leading-tight mb-6 text-white drop-shadow-[3px_3px_0px_rgba(61,29,140,1)]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans leading-tight mb-6 text-white drop-shadow-[3px_3px_0px_rgba(61,29,140,1)]">
             Create Magical Stories For Your Kids in Seconds
           </h1>
           
@@ -79,7 +79,7 @@ const Hero = () => {
           </div>
           
           <div className="flex flex-wrap gap-4 mb-8">
-            <Link to="/signup" className="bg-accent px-8 py-4 rounded-full text-lg font-chewy text-dark shadow-button hover:-translate-y-1 transform transition duration-200 flex items-center">
+            <Link to="/signup" className="bg-accent px-8 py-4 rounded-full text-lg font-sans text-dark shadow-button hover:-translate-y-1 transform transition duration-200 flex items-center font-semibold">
               <span>Start Creating for Free</span>
               <ChevronRight size={20} className="ml-2" />
             </Link>

@@ -127,7 +127,7 @@ const PaymentConfirmation = () => {
         <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full">
           <div className="flex flex-col items-center justify-center">
             <RefreshCw size={48} className="text-primary-500 animate-spin mb-4" />
-            <h2 className="text-2xl font-chewy text-dark mb-2">Processing Payment</h2>
+            <h2 className="text-2xl font-sans text-dark mb-2">Processing Payment</h2>
             <p className="text-gray-600 text-center">
               Please wait while we confirm your payment details...
             </p>
@@ -147,7 +147,7 @@ const PaymentConfirmation = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h2 className="text-2xl font-chewy text-dark mb-2">Payment Information Not Found</h2>
+            <h2 className="text-2xl font-sans text-dark mb-2">Payment Information Not Found</h2>
             <p className="text-gray-600 text-center mb-6">
               We couldn't find details for this payment. Please try again or contact support.
             </p>
@@ -175,7 +175,7 @@ const PaymentConfirmation = () => {
             <div className="bg-green-100 p-3 rounded-full mb-4">
               <CheckCircle size={48} className="text-green-500" />
             </div>
-            <h2 className="text-2xl font-chewy text-dark mb-2">Payment Successful!</h2>
+            <h2 className="text-2xl font-sans text-dark mb-2">Payment Successful!</h2>
             <p className="text-gray-600 text-center">
               Your subscription has been activated successfully.
             </p>
