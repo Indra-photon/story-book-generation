@@ -537,6 +537,15 @@ const userSchema = new Schema(
         refreshToken: {
             type: String
         },
+
+        accessTokenExpiry: {
+        type: Date,
+        default: null
+        },
+        refreshTokenExpiry: {
+            type: Date,
+            default: null
+        },
         forgotPasswordToken: {
             type: String
         },
@@ -969,7 +978,55 @@ userSchema.methods.isPasswordCorrect = async function(password) {
     return await bcrypt.compare(password, this.password);
 };
 
+// userSchema.methods.generateAccessToken = function() {
+//     return jwt.sign({
+//         _id: this._id,
+//         email: this.email,
+//         username: this.username,
+//         subscription: {
+//             tier: this.subscription.tier,
+//             status: this.subscription.status
+//         }
+//     }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: process.env.ACCESS_TOKEN_EXPIRY});
+// };
+
+// userSchema.methods.generateRefreshToken = function() {
+//     return jwt.sign({
+//         _id: this._id,
+//     }, process.env.REFRESH_TOKEN_SECRET, {expiresIn: process.env.REFRESH_TOKEN_EXPIRY});
+// };
+
 userSchema.methods.generateAccessToken = function() {
+    // Calculate and set expiry time in database
+    const now = new Date();
+    const expiryDuration = process.env.ACCESS_TOKEN_EXPIRY || '1h';
+    
+    // Parse the duration and calculate expiry
+    const match = expiryDuration.match(/^(\d+)([smhd])$/);
+    if (match) {
+        const [fullMatch, value, unit] = match;
+        const amount = parseInt(value);
+        
+        const expiryDate = new Date(now);
+        switch (unit) {
+            case 'h':
+                expiryDate.setHours(expiryDate.getHours() + amount);
+                break;
+            case 'd':
+                expiryDate.setDate(expiryDate.getDate() + amount);
+                break;
+            case 'm':
+                expiryDate.setMinutes(expiryDate.getMinutes() + amount);
+                break;
+            case 's':
+                expiryDate.setSeconds(expiryDate.getSeconds() + amount);
+                break;
+        }
+        
+        // Update the accessTokenExpiry field
+        this.accessTokenExpiry = expiryDate;
+    }
+    
     return jwt.sign({
         _id: this._id,
         email: this.email,
@@ -978,13 +1035,45 @@ userSchema.methods.generateAccessToken = function() {
             tier: this.subscription.tier,
             status: this.subscription.status
         }
-    }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: process.env.ACCESS_TOKEN_EXPIRY});
+    }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: expiryDuration});
 };
 
 userSchema.methods.generateRefreshToken = function() {
+    // Calculate and set expiry time in database
+    const now = new Date();
+    const expiryDuration = process.env.REFRESH_TOKEN_EXPIRY || '10d';
+    
+    // Parse the duration and calculate expiry
+    const match = expiryDuration.match(/^(\d+)([smhd])$/);
+    if (match) {
+        const [vfullMatch, value, unit] = match;
+        const amount = parseInt(value);
+        
+        const expiryDate = new Date(now);
+        switch (unit) {
+            case 'h':
+                expiryDate.setHours(expiryDate.getHours() + amount);
+                break;
+            case 'd':
+                expiryDate.setDate(expiryDate.getDate() + amount);
+                break;
+            case 'm':
+                expiryDate.setMinutes(expiryDate.getMinutes() + amount);
+                break;
+            case 's':
+                expiryDate.setSeconds(expiryDate.getSeconds() + amount);
+                break;
+        }
+        
+        // Update the refreshTokenExpiry field
+        this.refreshTokenExpiry = expiryDate;
+    }
+    
     return jwt.sign({
         _id: this._id,
-    }, process.env.REFRESH_TOKEN_SECRET, {expiresIn: process.env.REFRESH_TOKEN_EXPIRY});
+    }, process.env.REFRESH_TOKEN_SECRET, {expiresIn: expiryDuration});
 };
+
+
 
 export const User = mongoose.model("User", userSchema);
