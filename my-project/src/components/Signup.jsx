@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Add axios import
 import toast, { Toaster } from "react-hot-toast";
 import { useSelector, useDispatch } from 'react-redux';
+import { logout, login} from "../store/authSlice.js";
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -17,73 +18,73 @@ const Signup = () => {
 
   const navigate = useNavigate();
   
-  // const create = async ({ username, email, fullname, password }) => {
-  //   setError("");
-  //   setLoading(true);
-
-  //   // console.log('Signup form submitted:', { username, email, fullname, password });
-  //   const loadingToast = toast.loading("Creating your account...");
-  //   try {
-  //     // console.log(username, email, fullname, password);
-  //     const res = await axios.post(`${import.meta.env.VITE_BACKEND_DOMAIN }/api/v1/users/register`, {
-  //       username,
-  //       email,
-  //       fullname,
-  //       password,
-  //     });
-
-  //     toast.dismiss(loadingToast);
-
-  //     if (res.data.success) {
-  //       toast.success(res.data.message || "Account created successfully!");
-  //       setTimeout(() => navigate("/login"), 2000); // Redirect to SignIn after 2 seconds
-  //     }
-  //   } catch (error) {
-  //     toast.dismiss(loadingToast);
-  //     const errorMessage = error.response?.data?.message || error.message || "Something went wrong";
-  //     toast.error(errorMessage);
-  //     setError(errorMessage);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
-
   const create = async ({ username, email, fullname, password }) => {
+    setError("");
+    setLoading(true);
+
+    // console.log('Signup form submitted:', { username, email, fullname, password });
+    const loadingToast = toast.loading("Creating your account...");
     try {
+      // console.log(username, email, fullname, password);
       const res = await axios.post(`${import.meta.env.VITE_BACKEND_DOMAIN }/api/v1/users/register`, {
         username,
         email,
         fullname,
         password,
-      }, {
-        withCredentials: true
       });
 
-      if (res.data.success) {
-        // Try to immediately log in the user
-        const userResponse = await axios.get(
-          `${import.meta.env.VITE_BACKEND_DOMAIN }/api/v1/users/me`,
-          { withCredentials: true }
-        );
+      toast.dismiss(loadingToast);
 
-        if (userResponse.data.success) {
-          dispatch(login(userResponse.data.data));
-          toast.success(res.data.message || "Account created successfully!");
-          navigate("/work-area");
-        } else {
-          // If fetching user data fails, redirect to login
-          toast.success(res.data.message || "Account created successfully!");
-          setTimeout(() => navigate("/login"), 2000);
-        }
+      if (res.data.success) {
+        toast.success(res.data.message || "Account created successfully!, Please confirm your email and then login");
+        setTimeout(() => navigate("/login"), 2000); // Redirect to SignIn after 2 seconds
       }
     } catch (error) {
+      toast.dismiss(loadingToast);
       const errorMessage = error.response?.data?.message || error.message || "Something went wrong";
       toast.error(errorMessage);
-      dispatch(logout());
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
   }
+
+  // const create = async ({ username, email, fullname, password }) => {
+  //   try {
+  //     const res = await axios.post(`${import.meta.env.VITE_BACKEND_DOMAIN }/api/v1/users/register`, {
+  //       username,
+  //       email,
+  //       fullname,
+  //       password,
+  //     }, {
+  //       withCredentials: true
+  //     });
+
+  //     if (res.data.success) {
+  //       // Try to immediately log in the user
+  //       const userResponse = await axios.get(
+  //         `${import.meta.env.VITE_BACKEND_DOMAIN }/api/v1/users/me`,
+  //         { withCredentials: true }
+  //       );
+
+  //       if (userResponse.data.success) {
+  //         dispatch(login(userResponse.data.data));
+  //         toast.success(res.data.message || "Account created successfully!");
+  //         navigate("/work-area");
+  //       } else {
+  //         // If fetching user data fails, redirect to login
+  //         toast.success(res.data.message || "Account created successfully!");
+  //         setTimeout(() => navigate("/login"), 2000);
+  //       }
+  //     }
+  //   } catch (error) {
+  //     const errorMessage = error.response?.data?.message || error.message || "Something went wrong";
+  //     toast.error(errorMessage);
+  //     dispatch(logout());
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   const validateForm = () => {
     const errors = {};

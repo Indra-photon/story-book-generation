@@ -43,9 +43,9 @@ const emailVerificationmailgenContent = (username, verificationUrl) => {
     return {
         body : {
             name: username,
-            intro: 'Welcome to Mailgen! We\'re very excited to have you on board.',
+            intro: 'Welcome to StroyTeller! We\'re very excited to have you on board.',
             action: {
-                instructions: 'To get started with Our App, please click here:',
+                instructions: 'To get started with Our App, please cofirm your email by clicking the button below.',
                 button: {
                     color: '#22BC66', // button colour
                     text: 'Verify your email', // text on the button

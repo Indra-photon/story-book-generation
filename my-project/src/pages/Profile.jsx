@@ -875,7 +875,7 @@ const Profile = () => {
   const { isLoading: razorpayLoading, handlePayment } = useRazorpayCheckout();
   const [showFullTokenHistory, setShowFullTokenHistory] = useState(false);
 
-    const refreshUserData = async () => {
+  const refreshUserData = async () => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_DOMAIN}/api/v1/users/me`,
@@ -916,15 +916,15 @@ const Profile = () => {
         return {
           initialTokens: 40,
           maxTokens: 50,
-          price: 299,
-          display: '₹299/month'
+          price: 300,
+          display: '₹300/month'
         };
       case 'premium':
         return {
           initialTokens: 80,
           maxTokens: 100,
-          price: 599,
-          display: '₹599/month'
+          price: 800,
+          display: '₹800/month'
         };
       case 'free':
       default:

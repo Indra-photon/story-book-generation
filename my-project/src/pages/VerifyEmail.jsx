@@ -48,10 +48,10 @@ function VerifyEmail() {
             You can now access all features.
           </p>
           <button 
-            onClick={() => navigate('/profile')}
+            onClick={() => navigate('/login')}
             className="bg-primary-500 text-white px-6 py-2 rounded hover:bg-primary-600 transition"
           >
-            Go to Profile
+            Login Now
           </button>
         </div>
       </div>

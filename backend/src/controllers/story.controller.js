@@ -234,9 +234,7 @@ const generateStoryPrompt = asyncHandler(async (req, res) => {
       system: system_prompt,
       temperature: 0.9,
     };
-    
-    // Consume tokens for story generation BEFORE API call
-    // This ensures we don't charge if the API call fails
+
     const tokenConsumed = await user.consumeTokens(
       STORY_GENERATION_COST, 
       'story', 
@@ -573,7 +571,7 @@ const saveStory = asyncHandler(async (req, res) => {
         // Update token transaction
         existingStory.tokenTransaction.initialSaveCost = STORY_SAVE_TOKEN_COST;
         existingStory.tokenTransaction.totalTokensCost = 
-          existingStory.tokenTransaction.initialGenerationCost + STORY_SAVE_TOKEN_COST;
+        existingStory.tokenTransaction.initialGenerationCost + STORY_SAVE_TOKEN_COST;
         existingStory.tokenTransaction.isInitialSave = false;
       }
       // For subsequent saves/updates, no tokens are deducted
