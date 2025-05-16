@@ -703,58 +703,6 @@ const handleGenerateSceneImage = async (sceneId, visualDescription) => {
    }
  };
 
- // Scene text editing feature
- const handleEditSceneText = (sceneId) => {
-   const sceneToEdit = scenes.find(scene => scene.id === sceneId);
-   if (!sceneToEdit) return;
-   
-   setEditingSceneId(sceneId);
-   setEditableSceneText(sceneToEdit.text);
-   
-   // Update scenes to show which one is being edited
-   const updatedScenes = scenes.map(scene => 
-     scene.id === sceneId 
-       ? { ...scene, isEditing: true }
-       : scene
-   );
-   
-   setScenes(updatedScenes);
- };
- 
- const handleCancelEditScene = () => {
-   // Reset editing state
-   setEditingSceneId(null);
-   setEditableSceneText('');
-   
-   // Update scenes to cancel edit mode
-   const updatedScenes = scenes.map(scene => ({
-     ...scene,
-     isEditing: false
-   }));
-   
-   setScenes(updatedScenes);
- };
- 
- const handleSaveSceneText = (sceneId) => {
-   // Find the scene being edited
-   const sceneIndex = scenes.findIndex(scene => scene.id === sceneId);
-   if (sceneIndex === -1) return;
-   
-   // Update scenes with the new text
-   const updatedScenes = [...scenes];
-   updatedScenes[sceneIndex] = {
-     ...updatedScenes[sceneIndex],
-     text: editableSceneText,
-     isEditing: false
-   };
-   
-   setScenes(updatedScenes);
-   setEditingSceneId(null);
-   setEditableSceneText('');
-   setIsStoryModified(true);
-   setIsStorySaved(false);
- };
-
  // Regenerate an image for a specific scene
  const handleRegenerateSceneImage = async (sceneId, visualDescription) => {
    // Simply reuse the generate function
@@ -938,7 +886,7 @@ const handleGenerateSceneImage = async (sceneId, visualDescription) => {
                    <h4 className="font-bold text-2xl text-dark">{scene.title}</h4>
                    
                    {/* Edit/Save toggle for scene text */}
-                   {scene.isEditing ? (
+                   {/* {scene.isEditing ? (
                      <div className="flex space-x-2">
                        <button 
                          onClick={() => handleSaveSceneText(scene.id)}
@@ -963,7 +911,7 @@ const handleGenerateSceneImage = async (sceneId, visualDescription) => {
                      >
                        <Edit size={16} />
                      </button>
-                   )}
+                   )} */}
                  </div>
                  
                  {/* Scene text - editable or read-only */}
@@ -1047,13 +995,15 @@ const handleGenerateSceneImage = async (sceneId, visualDescription) => {
                {story.coverPageVisualDescription && (
                  <div className="mt-2">
                    <p className="text-xs text-gray-500 italic line-clamp-3">{story.coverPageVisualDescription}</p>
-                   <button 
-                     className="mt-3 px-3 py-1.5 text-sm bg-primary-500 text-white rounded hover:bg-primary-600 transition flex items-center"
-                     onClick={handleGenerateCoverImage}
-                     disabled={isGeneratingCover || isGeneratingBulkImages}
-                   >
-                     {coverPageImage ? 'Regenerate Cover' : 'Generate Cover'}
-                   </button>
+                   {coverPageImage && !isGeneratingBulkImages && (
+                        <button 
+                          className="mt-3 px-3 py-1.5 text-sm bg-primary-500 text-white rounded hover:bg-primary-600 transition flex items-center"
+                          onClick={handleGenerateCoverImage}
+                          disabled={isGeneratingCover}
+                        >
+                          Regenerate Cover
+                        </button>
+                    )}
                  </div>
                )}
              </div>
@@ -1087,13 +1037,15 @@ const handleGenerateSceneImage = async (sceneId, visualDescription) => {
                {story.endPageVisualDescription && (
                  <div className="mt-2">
                    <p className="text-xs text-gray-500 italic line-clamp-3">{story.endPageVisualDescription}</p>
-                   <button 
-                     className="mt-3 px-3 py-1.5 text-sm bg-primary-500 text-white rounded hover:bg-primary-600 transition flex items-center"
-                     onClick={handleGenerateEndPageImage}
-                     disabled={isGeneratingEndPage || isGeneratingBulkImages}
-                   >
-                     {endPageImage ? 'Regenerate End Page' : 'Generate End Page'}
-                   </button>
+                   {endPageImage && !isGeneratingBulkImages && (
+                      <button 
+                        className="mt-3 px-3 py-1.5 text-sm bg-primary-500 text-white rounded hover:bg-primary-600 transition flex items-center"
+                        onClick={handleGenerateEndPageImage}
+                        disabled={isGeneratingEndPage}
+                      >
+                        Regenerate End Page
+                      </button>
+                    )}
                  </div>
                )}
              </div>

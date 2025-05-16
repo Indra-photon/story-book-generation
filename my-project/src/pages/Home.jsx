@@ -13,10 +13,18 @@ function Home() {
   return (
     <div>
       <Hero />
-      <StorybookShowcase />
-      <HowItWorks />
-      <FeaturesShowcase />
-      <Pricing />
+      <div id="gallery-section">
+        <StorybookShowcase />
+      </div>
+      {/* <div id="how-it-works-section">
+        <HowItWorks />
+      </div> */}
+      <div id="features-section">
+        <FeaturesShowcase />
+      </div>
+      <div id="pricing-section">
+        <Pricing />
+      </div>
       <FAQ />
       <Footer />
     </div>
